@@ -228,6 +228,37 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
   background:rgba(8,28,51,.9);color:var(--gold2);font-size:1.15rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;backdrop-filter:blur(6px)}
 #toTop.show{opacity:1;pointer-events:auto}
 .marquee:hover .mtrack{animation-play-state:paused}
+
+/* ===== v5 layer ===== */
+.stepper{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:center;max-width:920px;margin:0 auto}
+@media(max-width:760px){.stepper{grid-template-columns:1fr}}
+.step-btns{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.step-btns button{border:1px solid var(--line);background:rgba(255,255,255,.04);color:var(--gold2);font-weight:800;
+  padding:8px 16px;border-radius:999px;cursor:pointer;font-family:inherit;transition:.25s}
+.step-btns button.on{background:linear-gradient(135deg,var(--gold),#a9833f);color:#081c33}
+.step-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;min-height:170px}
+.step-card h3{color:#fff;font-size:1.25rem;margin-bottom:6px}
+.step-card h3 b{color:var(--gold)}
+.step-card p{color:var(--muted)}
+.shades{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:18px}
+.shade{width:58px;height:58px;border-radius:14px;border:2px solid rgba(255,255,255,.15);cursor:pointer;
+  display:flex;align-items:flex-end;justify-content:center;padding-bottom:5px;font-weight:900;font-size:.8rem;color:#5a4a22;transition:.2s}
+.shade:hover{transform:translateY(-4px)}
+.shade.on{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,92,.35)}
+.quiz-card{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px 24px;text-align:center}
+.quiz-card .qq{font-size:1.3rem;color:#fff;font-weight:800;min-height:2.4em}
+.quiz-card .qprog{color:var(--gold2);font-weight:800;font-size:.9rem;margin-bottom:10px}
+.qbtns{display:flex;gap:12px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+.qbtns button{padding:12px 30px;border-radius:999px;border:1px solid var(--gold);cursor:pointer;font-family:inherit;font-weight:900;font-size:1rem;transition:.25s}
+.qbtns .true-b{background:rgba(14,124,134,.25);color:#bfeef2}
+.qbtns .myth-b{background:rgba(201,164,92,.18);color:var(--gold2)}
+.qbtns button:hover{transform:translateY(-3px)}
+.qfeed{margin-top:16px;color:var(--muted);min-height:3.2em}
+.qfeed b{color:#fff}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:14px}
+.dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
+.dots i.on{background:var(--gold)}
+.confetti{position:fixed;width:9px;height:9px;border-radius:2px;z-index:300;pointer-events:none}
 </style>
 </head>
 <body>
@@ -260,6 +291,7 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
       <div class="cta">
         <a class="btn gold magnet" href="#book">احجز موعدك</a>
         <a class="btn ghost magnet" href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener">السيرة المهنية — LinkedIn</a>
+        <a class="btn ghost magnet" href="#" id="cvBtn">تحميل السيرة الذاتية PDF</a>
       </div>
       <div class="stats">
         <div class="stat"><div class="num"><span data-count="5">0</span><i>+</i></div><div class="lbl">سنوات خبرة إكلينيكية</div></div>
@@ -323,6 +355,41 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
       <p id="tiP">إذا وصل التسوس أو الكسر إلى لب السن، يبدأ الألم النابض والحساسية الشديدة للحرارة. الحل ليس الخلع: علاج الجذور تحت الميكروسكوب يُنظّف اللب الملتهب ويُعقّم القنوات ثم يحشوها — فيحتفظ السن بمكانه ووظيفته.</p>
       <span class="tbtn" id="tiTag">علاج الجذور — Endodontics</span>
     </div>
+  </div>
+</section>
+
+
+<section id="endo-steps">
+  <div class="sec-head reveal"><div class="k">رحلة العلاج</div><h2>علاج الجذور… خطوة بخطوة</h2>
+  <p>أربع خطوات دقيقة بين الألم والحفاظ على السن. التنقل بينها تلقائي — أو دوس على أي خطوة.</p></div>
+  <div class="stepper">
+    <div class="reveal">
+      <svg class="tooth-svg" viewBox="0 0 200 240" role="img" aria-label="خطوات علاج الجذور">
+        <path d="M100 18 C74 18 44 30 40 62 C37 86 48 104 52 132 C56 162 58 208 72 208 C84 208 86 172 100 172 C114 172 116 208 128 208 C142 208 144 162 148 132 C152 104 163 86 160 62 C156 30 126 18 100 18 Z" fill="rgba(255,255,255,.06)" stroke="#c9a45c" stroke-width="2.5"/>
+        <path id="ePulp" d="M100 66 C85 66 77 80 81 96 C84 108 92 114 94 130 L96 158 L104 158 L106 130 C108 114 116 108 119 96 C123 80 115 66 100 66 Z" fill="#c0392b" opacity=".55" style="transition:all .8s ease"/>
+        <path id="eCanal" d="M100 80 C97 104 98 132 100 160" fill="none" stroke="#0e7c86" stroke-width="3" stroke-linecap="round" stroke-dasharray="5 6" opacity="0" style="transition:opacity .6s"/>
+        <ellipse id="eCrown" cx="100" cy="34" rx="17" ry="8" fill="#e8cf8f" opacity="0" style="transition:opacity .8s"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <div class="step-btns" id="stepBtns">
+        <button data-s="0" class="on">١ التشخيص</button><button data-s="1">٢ التنظيف</button><button data-s="2">٣ التعقيم</button><button data-s="3">٤ الحشو</button>
+      </div>
+      <div class="step-card"><h3 id="esT">الخطوة <b>١</b> — التشخيص الدقيق</h3><p id="esP">أشعة وفحص إكلينيكي لتحديد حالة العصب وعدد القنوات وانحناءاتها — تحت التكبير المجهري من أول لحظة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="shades">
+  <div class="sec-head reveal"><div class="k">لعبة الألوان</div><h2>جرّب درجات لون الأسنان — VITA</h2>
+  <p>دوس على أي درجة وشوف لون السن بيتغير — دي الدرجات العالمية اللي بنختار منها لون الحشوات والتيجان.</p></div>
+  <div class="reveal" style="text-align:center">
+    <svg class="tooth-svg" viewBox="0 0 200 240" style="width:min(220px,60vw)" role="img" aria-label="درجات لون الأسنان">
+      <path id="sTooth" d="M100 18 C74 18 44 30 40 62 C37 86 48 104 52 132 C56 162 58 208 72 208 C84 208 86 172 100 172 C114 172 116 208 128 208 C142 208 144 162 148 132 C152 104 163 86 160 62 C156 30 126 18 100 18 Z" fill="#F1EAD6" stroke="#c9a45c" stroke-width="2.5" style="transition:fill .5s"/>
+    </svg>
+    <div style="color:#fff;font-weight:900;font-size:1.2rem;margin-top:8px">الدرجة المختارة: <span id="sName" style="color:var(--gold2)">A2</span></div>
+    <p id="sNote" style="color:var(--muted);max-width:520px;margin:4px auto 0">درجة طبيعية فاتحة — هدف شائع بعد التبييض الاحترافي.</p>
+    <div class="shades" id="shadeRow"></div>
   </div>
 </section>
 
@@ -426,6 +493,37 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
     <details class="reveal"><summary>هل أحتاج إلى تاج (طربوش) بعد علاج الجذور؟</summary><p>في معظم الضروس الخلفية يُنصح بتركيب تاج بعد علاج الجذور لحماية السن من الكسر واستعادة وظيفته الكاملة في المضغ.</p></details>
     <details class="reveal"><summary>أين تمارس عملك حاليًا؟</summary><p>في مركز سمايل سنتر بديروط — الذي أسسته وأديره طبيًا — إلى جانب مراكز خضر وعناية وابتسامة لطب الأسنان.</p></details>
     <details class="reveal"><summary>كيف يمكنني حجز موعد؟</summary><p>عبر البريد الإلكتروني الموضح في قسم الحجز بالأسفل، أو من خلال صفحاتي الرسمية على منصات التواصل.</p></details>
+  </div>
+</section>
+
+
+<section id="quiz">
+  <div class="sec-head reveal"><div class="k">اختبر معلوماتك</div><h2>حقيقة ولا خرافة؟</h2>
+  <p>٣ عبارات شائعة عن الأسنان — تقدر تميّز الصح من الغلط؟</p></div>
+  <div class="quiz-card reveal" id="quizCard">
+    <div class="qprog" id="qProg">السؤال ١ من ٣</div>
+    <div class="qq" id="qText">«علاج الجذور مؤلم جدًا»</div>
+    <div class="qbtns" id="qBtns">
+      <button class="true-b" data-a="true">حقيقة</button>
+      <button class="myth-b" data-a="myth">خرافة</button>
+    </div>
+    <div class="qfeed" id="qFeed"></div>
+    <div class="qbtns"><button id="qNext" class="myth-b" style="display:none">السؤال اللي بعده</button></div>
+  </div>
+</section>
+
+<section id="checker">
+  <div class="sec-head reveal"><div class="k">فحص توعوي سريع</div><h2>هل تحتاج فحص علاج جذور؟</h2>
+  <p>٤ أسئلة بنعم أو لا — أداة توعية فقط وليست تشخيصًا طبيًا.</p></div>
+  <div class="quiz-card reveal">
+    <div class="qprog" id="cProg">السؤال ١ من ٤</div>
+    <div class="qq" id="cText">هل يوقظك ألم نابض في سنّك من النوم؟</div>
+    <div class="qbtns" id="cBtns">
+      <button class="true-b" data-a="yes">نعم</button>
+      <button class="myth-b" data-a="no">لا</button>
+    </div>
+    <div class="qfeed" id="cFeed"></div>
+    <div class="dots" id="cDots"><i class="on"></i><i></i><i></i><i></i></div>
   </div>
 </section>
 
@@ -630,6 +728,128 @@ if(cp) cp.addEventListener('click',()=>{
   const url='https://mohmed1995.github.io/mohamed-abdelbadie/';
   if(navigator.clipboard) navigator.clipboard.writeText(url).then(()=>{ cp.textContent='اتنسخ ✓'; setTimeout(()=>cp.textContent='نسخ رابط الموقع',2000); });
 });
+</script>
+
+<script>
+// ===== v5 interactions =====
+// CV download (PDF stored as base64 text in repo)
+const cvBtn=document.getElementById('cvBtn');
+if(cvBtn) cvBtn.addEventListener('click',e=>{
+  e.preventDefault();
+  fetch('CV.pdf.b64').then(r=>r.text()).then(t=>{
+    const bin=atob(t.trim()); const bytes=new Uint8Array(bin.length);
+    for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+    const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+    const a=document.createElement('a'); a.href=url; a.download='Mohamed-Abdelbadie-CV.pdf'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+  }).catch(()=>{});
+});
+// Confetti burst
+function burst(x,y){
+  const colors=['#c9a45c','#e8cf8f','#0e7c86','#ffffff'];
+  for(let i=0;i<34;i++){
+    const s=document.createElement('span'); s.className='confetti';
+    s.style.background=colors[i%4]; s.style.left=x+'px'; s.style.top=y+'px';
+    document.body.appendChild(s);
+    const ang=Math.random()*6.28, v=90+Math.random()*190;
+    s.animate([{transform:'translate(0,0) rotate(0)',opacity:1},
+      {transform:`translate(${Math.cos(ang)*v}px,${Math.sin(ang)*v+130}px) rotate(${Math.random()*540-270}deg)`,opacity:0}],
+      {duration:950+Math.random()*500,easing:'cubic-bezier(.2,.8,.3,1)'}).onfinish=()=>s.remove();
+  }
+}
+// Endo journey stepper
+(function(){
+  const steps=[
+    {t:'التشخيص الدقيق',p:'أشعة وفحص إكلينيكي لتحديد حالة العصب وعدد القنوات وانحناءاتها — تحت التكبير المجهري من أول لحظة.',pulp:'#c0392b',po:.55,canal:0,crown:0},
+    {t:'التنظيف والتشكيل',p:'إزالة اللب الملتهب وتشكيل القنوات بأنظمة الملفات الدوارة الحديثة، مع قياس إلكتروني دقيق لطول كل قناة.',pulp:'#ffffff',po:.06,canal:0,crown:0},
+    {t:'الإرواء والتعقيم',p:'غسل القنوات بمحاليل التعقيم الحديثة للقضاء على البكتيريا في أدق التفرعات — سر نجاح العلاج طويل المدى.',pulp:'#0e7c86',po:.35,canal:1,crown:0},
+    {t:'الحشو والترميم',p:'حشو القنوات بإحكام ثلاثي الأبعاد، ثم ترميم السن تجميليًا — وغالبًا تاج خزفي لحمايته في الضروس الخلفية.',pulp:'#c9a45c',po:.9,canal:0,crown:1}
+  ];
+  const P=document.getElementById('ePulp'),C=document.getElementById('eCanal'),CR=document.getElementById('eCrown'),
+        T=document.getElementById('esT'),X=document.getElementById('esP'),B=[...document.querySelectorAll('#stepBtns button')];
+  if(!P) return;
+  let cur=0, timer=null;
+  function show(i){
+    cur=i; const s=steps[i];
+    P.setAttribute('fill',s.pulp); P.setAttribute('opacity',s.po);
+    C.setAttribute('opacity',s.canal); CR.setAttribute('opacity',s.crown);
+    T.innerHTML='الخطوة <b>'+(i+1)+'</b> — '+s.t; X.textContent=s.p;
+    B.forEach((b,j)=>b.classList.toggle('on',j===i));
+  }
+  function auto(){ timer=setInterval(()=>show((cur+1)%4),3600); }
+  B.forEach(b=>b.addEventListener('click',()=>{ clearInterval(timer); show(+b.dataset.s); }));
+  const io2=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ auto(); io2.disconnect(); } }),{threshold:.3});
+  io2.observe(document.getElementById('endo-steps'));
+})();
+// VITA shades
+(function(){
+  const shades=[
+    {n:'B1',c:'#FBF8F0',note:'من أفتح الدرجات على الإطلاق — تُقاس عادة مع الفينير أو بعد تبييض قوي.'},
+    {n:'A1',c:'#F7F3E8',note:'درجة فاتحة جدًا — هدف من يبحث عن ابتسامة لامعة.'},
+    {n:'A2',c:'#F1EAD6',note:'درجة طبيعية فاتحة — هدف شائع بعد التبييض الاحترافي.'},
+    {n:'B2',c:'#F4EFDD',note:'فاتحة بلمسة دافئة — من أكثر الدرجات طلبًا في الترميمات الأمامية.'},
+    {n:'A3',c:'#EADFC2',note:'الدرجة الطبيعية الأكثر شيوعًا بين البالغين.'},
+    {n:'C2',c:'#E7DFC8',note:'طبيعية بمسحة رمادية خفيفة — شائعة في الأسنان الخلفية.'},
+    {n:'A3.5',c:'#E2D3AC',note:'أدفأ وأغمق قليلًا — تُطابَع بها التيجان للأسنان الطبيعية المجاورة.'},
+    {n:'D3',c:'#DED2B4',note:'درجة دافئة عميقة — مطابقة لون السن الطبيعي أهم من تفتيحه دائمًا.'}
+  ];
+  const row=document.getElementById('shadeRow'); if(!row) return;
+  const tooth=document.getElementById('sTooth'), nm=document.getElementById('sName'), nt=document.getElementById('sNote');
+  shades.forEach((s,i)=>{
+    const b=document.createElement('button'); b.className='shade'+(s.n==='A2'?' on':''); b.style.background=s.c; b.textContent=s.n; b.type='button';
+    b.addEventListener('click',()=>{ tooth.setAttribute('fill',s.c); nm.textContent=s.n; nt.textContent=s.note;
+      row.querySelectorAll('.shade').forEach(x=>x.classList.remove('on')); b.classList.add('on'); });
+    row.appendChild(b);
+  });
+})();
+// Quiz: fact or myth
+(function(){
+  const Q=[
+    {q:'«علاج الجذور مؤلم جدًا»',a:'myth',why:'<b>خرافة.</b> مع التخدير الحديث والتقنيات الدقيقة، أغلب الحالات تُعالج دون ألم يُذكر — والألم الحقيقي هو ألم الالتهاب قبل العلاج.'},
+    {q:'«تبييض الأسنان يدمّر المينا نهائيًا»',a:'myth',why:'<b>خرافة.</b> التبييض الاحترافي ببروتوكول صحيح ومواد معتمدة آمن على المينا؛ الخطر في الخلطات العشوائية والمنتجات غير المرخصة.'},
+    {q:'«السن يضعف بعد علاج الجذور ويحتاج حماية»',a:'true',why:'<b>حقيقة.</b> السن المعالج عصبيًا يفقد جزءًا من بنيته، لذلك يُنصح غالبًا بترميم قوي أو تاج — خاصة في الضروس الخلفية.'}
+  ];
+  let i=0, score=0, locked=false;
+  const T=document.getElementById('qText'),PR=document.getElementById('qProg'),F=document.getElementById('qFeed'),
+        N=document.getElementById('qNext'),BB=document.getElementById('qBtns');
+  if(!T) return;
+  BB.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    if(locked) return; locked=true;
+    const ok=b.dataset.a===Q[i].a; if(ok) score++;
+    F.innerHTML=(ok?'✅ صح! ':'❌ مش بالظبط. ')+Q[i].why;
+    N.style.display='inline-block'; N.textContent= i<2 ? 'السؤال اللي بعده' : 'النتيجة';
+  }));
+  N.addEventListener('click',()=>{
+    i++;
+    if(i<3){ locked=false; T.textContent=Q[i].q; PR.textContent='السؤال '+(i+1)+' من ٣'; F.innerHTML=''; N.style.display='none'; }
+    else{
+      T.textContent='نتيجتك: '+score+' من ٣'; PR.textContent='خلص الاختبار';
+      F.innerHTML= score===3 ? '<b>ممتاز!</b> معلوماتك عن الأسنان قوية جدًا.' : score===2 ? '<b>كويس جدًا!</b> فاضلك معلومة واحدة وتبقى خبير.' : '<b>بداية طيبة</b> — تابع المحتوى التوعوي وهتتحسن بسرعة.';
+      BB.style.display='none'; N.style.display='none';
+      if(score>=2){ const r=document.getElementById('quizCard').getBoundingClientRect(); burst(r.left+r.width/2, r.top+80); }
+    }
+  });
+})();
+// Symptom checker
+(function(){
+  const Q=['هل يوقظك ألم نابض في سنّك من النوم؟','هل تستمر حساسية الحرارة (سخن/بارد) بعد زوال المؤثر بثوانٍ؟','هل تشعر بألم حاد عند العض على السن؟','هل لاحظت تورّمًا في اللثة أو الوجه؟'];
+  let i=0, yes=0;
+  const T=document.getElementById('cText'),PR=document.getElementById('cProg'),F=document.getElementById('cFeed'),
+        D=[...document.querySelectorAll('#cDots i')],BB=document.getElementById('cBtns');
+  if(!T) return;
+  BB.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    if(b.dataset.a==='yes') yes++;
+    i++;
+    if(i<4){ T.textContent=Q[i]; PR.textContent='السؤال '+(i+1)+' من ٤'; D.forEach((d,j)=>d.classList.toggle('on',j<=i)); }
+    else{
+      PR.textContent='النتيجة التوعوية'; BB.style.display='none';
+      if(yes>=2){ T.textContent='أعراض تستحق الفحص قريبًا'; F.innerHTML='إجاباتك تشير إلى أعراض قد ترتبط بالتهاب لب السن. <b>يُنصح بحجز فحص علاج جذور في أقرب وقت</b> — العلاج المبكر أبسط ويحافظ على السن.'; }
+      else if(yes===1){ T.textContent='راقب الأعراض'; F.innerHTML='عرض واحد لا يكفي للقلق، لكن لا تهمله: لو استمر أو زاد، احجز فحصًا دوريًا واطلب تقييم السن.'; }
+      else { T.textContent='لا أعراض مقلقة'; F.innerHTML='تمام! واصل الفحص الدوري كل ٦ أشهر والتنظيف الاحترافي — الوقاية دائمًا أرخص من العلاج.'; }
+      const r=T.getBoundingClientRect(); if(yes===0) burst(r.left+r.width/2, r.top);
+    }
+  }));
+})();
 </script>
 </body>
 </html>
