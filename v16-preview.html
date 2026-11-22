@@ -368,11 +368,28 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
   .rot-in{transition:none}
 }
 
-/* ===== v16: hero spotlight (pointer/touch-follow gold glow) ===== */
-#spot{position:absolute;left:50%;top:34%;width:520px;height:520px;border-radius:50%;z-index:1;pointer-events:none;
-  transform:translate(-50%,-50%);
-  background:radial-gradient(circle,rgba(201,164,92,.34) 0%,rgba(201,164,92,.12) 38%,transparent 68%)}
+/* ===== v16: hero spotlight — outer #spot is the position:fixed follower (JS transform,
+   viewport coords); inner #spotDrift carries the gradient + a pure-CSS drift animation,
+   so the glow visibly wanders the hero even if JS never runs. The drift lives on the
+   INNER element on purpose: a transformed ancestor would become the containing block
+   for a fixed descendant and break viewport-coordinate following. ===== */
+#spot{position:fixed;left:50%;top:34%;width:520px;height:520px;z-index:1;pointer-events:none;
+  transform:translate(-50%,-50%);transition:opacity .45s ease}
+#spotDrift{width:100%;height:100%;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,164,92,.34) 0%,rgba(201,164,92,.12) 38%,transparent 68%);
+  animation:spotDrift 16s ease-in-out infinite alternate}
+@keyframes spotDrift{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(88px,36px)}
+  50%{transform:translate(28px,70px)}
+  75%{transform:translate(-78px,28px)}
+  100%{transform:translate(-42px,-52px)}
+}
+#spotDrift.tracking{animation:none}
 @media(max-width:640px){#spot{width:380px;height:380px}}
+@media (prefers-reduced-motion:reduce){
+  #spotDrift{animation:none}
+}
 /* ===== v16: console depth readout ===== */
 .depth{display:inline-block;margin-top:18px;font-size:.8rem;font-weight:700;letter-spacing:.14em;color:var(--gold-d);
   border-inline-start:3px solid var(--gold);padding:6px 12px;background:rgba(201,164,92,.07)}
@@ -380,10 +397,7 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
 .finale{position:relative;z-index:2;text-align:center;padding:96px 20px 6px;max-width:1280px;margin:0 auto}
 .fin-word{font-weight:700;letter-spacing:-.02em;line-height:1.02;font-size:clamp(3.2rem,11vw,7.6rem)}
 .fin-word.pain{color:var(--ink)}
-.fin-word.pain span{display:inline-block;transition:opacity .85s ease,filter .85s ease,transform .85s ease;transition-delay:.55s}
-.fin-word.pain span:nth-child(2){transition-delay:1s}
-.fin-word.pain span:nth-child(3){transition-delay:1.45s}
-.fin-word.pain span:nth-child(4){transition-delay:1.9s}
+.fin-word.pain span{display:inline-block;transition:opacity 1.6s ease,filter 1.6s ease,transform 1.6s ease}
 .finale.gone .fin-word.pain span{opacity:0;filter:blur(12px);transform:translateY(-18px)}
 .fin-word.smile{color:var(--gold)}
 .fin-cap{color:var(--ink60);margin-top:20px;font-size:1.02rem}
@@ -407,7 +421,7 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
 </nav>
 
 <header class="hero">
-  <div id="spot" aria-hidden="true"></div>
+  <div id="spot" aria-hidden="true"><div id="spotDrift"></div></div>
   <canvas id="mesh" aria-hidden="true"></canvas>
   
   <div class="hero-in">
@@ -709,7 +723,7 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
 
 <div class="finale" id="finale">
   <div aria-hidden="true">
-    <div class="fin-word pain"><span>P</span><span>A</span><span>I</span><span>N</span></div>
+    <div class="fin-word pain"><span style="transition-delay:.8s">P</span><span style="transition-delay:1.25s">A</span><span style="transition-delay:1.7s">I</span><span style="transition-delay:2.15s">N</span></div>
     <div class="fin-word smile">SMILE.</div>
   </div>
   <p class="fin-cap" data-ar="كل رحلة بتنتهي هنا — الألم بيروح، والابتسامة بتفضل." data-en="Every descent ends here — pain out, smile stays.">Every descent ends here — pain out, smile stays.</p>
@@ -1276,47 +1290,80 @@ setLang(LANG);
 </script>
 
 <script>
-// ===== v16: hero spotlight (pointer/touch follow; idle slow drift; pauses off-screen) =====
+// ===== v16: hero spotlight — CSS drifts the glow (inner #spotDrift keyframes, runs
+// with or without JS); JS only adds pointer/touch follow on the position:fixed outer
+// disc using raw viewport coordinates from window-level listeners. =====
 (function(){
-  const hero=document.querySelector('.hero'), spot=document.getElementById('spot');
+  const hero=document.querySelector('.hero'), spot=document.getElementById('spot'), drift=document.getElementById('spotDrift');
   if(!hero||!spot) return;
-  // JS drives the 520px glow disc in hero-relative pixels; the CSS left/top
-  // (50% / 34% + translate(-50%,-50%)) is the visible no-JS default position.
-  spot.style.left='0px'; spot.style.top='0px';
-  let ax=hero.clientWidth*.5, ay=Math.min(hero.clientHeight*.4,430);
-  let x=ax, y=ay, tx=ax, ty=ay, lastMove=0, vis=true, raf=null;
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let x=0, y=0, tx=0, ty=0, vis=true, raf=null, lastMove=0, tracking=false;
+  function aimHero(){ const r=hero.getBoundingClientRect(); tx=r.left+r.width*.5; ty=r.top+Math.min(r.height*.4,430); }
   function place(){ spot.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) translate(-50%,-50%)'; }
-  place();
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return; // static glow stays at hero centre
+  aimHero(); x=tx; y=ty;
+  // Window listeners attach unconditionally, before any early return, and are never
+  // removed — the IntersectionObserver below only pauses rAF rendering and fades the
+  // disc out when the hero is off-screen; it cannot kill the follow.
   function upd(cx,cy){
-    const r=hero.getBoundingClientRect(); if(!r.width||!r.height) return;
-    tx=ax=Math.min(r.width,Math.max(0,cx-r.left));
-    ty=ay=Math.min(r.height,Math.max(0,cy-r.top));
-    lastMove=performance.now();
+    if(reduce) return;
+    if(!tracking){
+      tracking=true;
+      if(drift){
+        // Adopt the glow's currently rendered centre (disc position + CSS drift
+        // offset) so handing control to the pointer has no visible jump, then
+        // stop the drift animation (its 0% keyframe is translate(0,0), identical
+        // to no transform, so this hand-off is seamless).
+        const r=drift.getBoundingClientRect(); x=r.left+r.width/2; y=r.top+r.height/2;
+        drift.classList.add('tracking');
+      }
+    }
+    tx=cx; ty=cy; lastMove=performance.now();
   }
-  hero.addEventListener('pointermove',e=>upd(e.clientX,e.clientY),{passive:true});
-  hero.addEventListener('touchmove',e=>{ if(e.touches[0]) upd(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
-  addEventListener('resize',()=>{ const w=hero.clientWidth,h=hero.clientHeight;
-    tx=Math.min(tx,w); ty=Math.min(ty,h); ax=Math.min(ax,w); ay=Math.min(ay,h); },{passive:true});
-  function loop(ts){
+  addEventListener('pointermove',e=>upd(e.clientX,e.clientY),{passive:true});
+  addEventListener('touchmove',e=>{ if(e.touches[0]) upd(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  addEventListener('scroll',()=>{ if(!tracking) aimHero(); },{passive:true});
+  addEventListener('resize',()=>{ if(!tracking){ aimHero(); if(!raf){ x=tx; y=ty; } } },{passive:true});
+  if(reduce){
+    // Static faint glow parked in the hero (absolute, scrolls away with it);
+    // CSS already disables the drift animation under reduced motion.
+    spot.style.position='absolute'; spot.style.left='50%'; spot.style.top='34%';
+    spot.style.transform='translate(-50%,-50%)';
+    return;
+  }
+  // JS takes over: anchor the fixed disc at 0,0 and drive it purely by transform.
+  spot.style.left='0px'; spot.style.top='0px';
+  place();
+  function loop(){
     raf=null;
-    if(performance.now()-lastMove>2600){ tx=ax+Math.sin(ts*.00021)*90; ty=ay+Math.cos(ts*.00016)*55; }
+    if(tracking&&performance.now()-lastMove>4000){
+      // Pointer idle: hand the glow back to the CSS drift (restarts at its 0%
+      // keyframe = no offset, so resuming is seamless too).
+      tracking=false; if(drift) drift.classList.remove('tracking');
+    }
     x+=(tx-x)*.08; y+=(ty-y)*.08;
     place();
     if(vis) raf=requestAnimationFrame(loop);
   }
   function start(){ if(raf===null&&vis) raf=requestAnimationFrame(loop); }
   if('IntersectionObserver' in window){
-    new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; if(vis) start(); }),{threshold:0}).observe(hero);
+    new IntersectionObserver(es=>es.forEach(e=>{
+      vis=e.isIntersecting;
+      spot.style.opacity=vis?'':'0';
+      if(vis) start();
+    }),{threshold:0}).observe(hero);
   }
   start();
 })();
-// ===== v16: finale PAIN -> SMILE (IntersectionObserver, fires once, never pinned) =====
+// ===== v16: finale PAIN -> SMILE (IntersectionObserver, replayable, never pinned) =====
+// Fires when >=60% of the band is visible; when the band fully leaves the viewport
+// the played class is removed and the letters reset, so scrolling away and back
+// replays the dissolve instead of it having fired unseen during a fast scroll.
 (function(){
   const f=document.getElementById('finale'); if(!f) return;
   if(!('IntersectionObserver' in window)) return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting&&e.intersectionRatio>=.6){ f.classList.add('gone'); io.disconnect(); }
+    if(e.isIntersecting&&e.intersectionRatio>=.6){ f.classList.add('gone'); }
+    else if(!e.isIntersecting){ f.classList.remove('gone'); }
   }),{threshold:.6});
   io.observe(f);
 })();
