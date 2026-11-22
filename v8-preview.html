@@ -313,7 +313,7 @@ body::after{content:'';position:fixed;inset:0;z-index:80;pointer-events:none;opa
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
 .stat .num{direction:ltr;unicode-bidi:isolate}
 #ring{width:30px;height:30px;opacity:0}
-.snd{white-space:nowrap;width:max-content;max-width:92vw;font-size:.84rem;padding:8px 16px;bottom:-16px}
+.snd{white-space:nowrap;width:max-content;max-width:92vw;font-size:.84rem;padding:8px 16px;position:relative;bottom:auto;left:auto;transform:none;margin-top:16px}
 .tilt img{object-position:center 22%}
 .tl{margin:0 auto}
 @media(max-width:1150px){.orbit{display:none}}
@@ -359,6 +359,16 @@ body::after{content:'';position:fixed;inset:0;z-index:80;pointer-events:none;opa
 .astp .n{flex:0 0 auto;width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#a9833f);color:#081c33;font-weight:900;display:flex;align-items:center;justify-content:center}
 .astp b{color:#fff;display:block}
 .astp span{color:var(--muted);font-size:.92rem}
+
+/* ===== v8.1 QA fixes ===== */
+@keyframes riseIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+h1{animation:riseIn .9s ease .15s both;overflow:visible}
+.hero-text{min-width:0}
+.about-txt{color:#d8e2ec;font-size:1.09rem}
+.phone-holder{display:flex;flex-direction:column;align-items:center}
+.cine{height:100svh}
+.cine::before,.cine::after{height:64px}
+.cine h2{max-width:920px;font-size:clamp(1.9rem,5.2vw,3.7rem)}
 </style>
 </head>
 <body>
@@ -450,7 +460,7 @@ body::after{content:'';position:fixed;inset:0;z-index:80;pointer-events:none;opa
         <g class="hotspot" data-part="enamel"><circle class="pulse" cx="64" cy="80" r="10"/><circle class="core" cx="64" cy="80" r="7"/></g>
         <g class="hotspot" data-part="crown"><circle class="pulse" cx="100" cy="50" r="10"/><circle class="core" cx="100" cy="50" r="7"/></g>
         <g class="hotspot" data-part="pulp"><circle class="pulse" cx="100" cy="102" r="10"/><circle class="core" cx="100" cy="102" r="7"/></g>
-        <g class="hotspot" data-part="root"><circle class="pulse" cx="126" cy="192" r="10"/><circle class="core" cx="126" cy="192" r="7"/></g>
+        <g class="hotspot" data-part="root"><circle class="pulse" cx="124" cy="170" r="10"/><circle class="core" cx="124" cy="170" r="7"/></g>
       </svg>
     </div>
     <div class="tooth-info reveal" id="toothInfo">
@@ -816,16 +826,6 @@ fetch('hero.mp4.b64').then(r=>r.text()).then(t=>{
 (function(){
   const L=document.getElementById('loader'), P=document.getElementById('lpct'), F=document.getElementById('lfill');
   let n=0; const iv=setInterval(()=>{ n+=Math.random()*16+6; if(n>=100){n=100;clearInterval(iv); setTimeout(()=>L.classList.add('done'),180); setTimeout(()=>L.remove(),1000);} P.textContent=Math.floor(n)+'%'; F.style.width=n+'%'; },90);
-})();
-// Split hero name into animated letters
-(function(){
-  const h1=document.getElementById('bigName'); if(!h1) return;
-  const walk=(node)=>{ [...node.childNodes].forEach(ch=>{
-    if(ch.nodeType===3){ const frag=document.createDocumentFragment();
-      [...ch.textContent].forEach((c,i)=>{ const s=document.createElement('span'); s.className='ch'; s.textContent=c===' '?'\u00A0':c; s.style.animationDelay=(Math.random()*.35)+'s'; frag.appendChild(s); });
-      node.replaceChild(frag,ch);
-    } else if(ch.nodeType===1) walk(ch);
-  });}; walk(h1);
 })();
 // Scroll progress + back-to-top
 const pbar=document.getElementById('pbar'), toTop=document.getElementById('toTop');
