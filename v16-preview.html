@@ -117,11 +117,11 @@ h1 .gdot{color:var(--gold)}
 .btn.ghost{color:var(--ink);background:transparent}
 .btn.ghost:hover{background:var(--ink);color:var(--bg0)}
 /* hero video (static frame) */
-.hero-video{margin-top:44px;background:var(--deep);border:1px solid var(--hair);border-radius:6px;padding:20px 16px 24px;position:relative;z-index:2}
-.reel-in{max-width:760px;margin:0 auto}
+.hero-video{margin:44px auto 0;max-width:462px;background:var(--deep);border:1px solid var(--hair);border-radius:6px;padding:18px 16px 22px;position:relative;z-index:2}
+.reel-in{max-width:none;margin:0}
 .reel-cap{font-family:'Space Mono',monospace;font-size:.78rem;font-weight:700;letter-spacing:.16em;color:var(--muted);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
 .reel-cap b{color:var(--gold);font-weight:700}
-.reel-frame{margin:18px auto 0;width:min(430px,90vw);border:1px solid rgba(242,238,230,.22);border-radius:6px;overflow:hidden;background:#000}
+.reel-frame{margin:16px auto 0;width:100%;border:1px solid rgba(242,238,230,.22);border-radius:6px;overflow:hidden;background:#000}
 .reel-frame video{width:100%;aspect-ratio:4/5;max-height:72svh;object-fit:cover;display:block;background:#000}
 .reel-row{display:flex;justify-content:center;margin-top:16px}
 .snd{white-space:nowrap;font-size:.85rem;padding:10px 20px;border:1px solid var(--gold);cursor:pointer;background:transparent;color:var(--gold);
@@ -369,8 +369,10 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
 }
 
 /* ===== v16: hero spotlight (pointer/touch-follow gold glow) ===== */
-#spot{position:absolute;inset:0;z-index:1;pointer-events:none;mix-blend-mode:screen;
-  background:radial-gradient(430px circle at var(--sx,70%) var(--sy,28%),rgba(201,164,92,.22),rgba(201,164,92,.07) 45%,transparent 70%)}
+#spot{position:absolute;left:50%;top:34%;width:520px;height:520px;border-radius:50%;z-index:1;pointer-events:none;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle,rgba(201,164,92,.34) 0%,rgba(201,164,92,.12) 38%,transparent 68%)}
+@media(max-width:640px){#spot{width:380px;height:380px}}
 /* ===== v16: console depth readout ===== */
 .depth{display:inline-block;margin-top:18px;font-size:.8rem;font-weight:700;letter-spacing:.14em;color:var(--gold-d);
   border-inline-start:3px solid var(--gold);padding:6px 12px;background:rgba(201,164,92,.07)}
@@ -378,10 +380,10 @@ html[lang="ar"] .foot-cta h2{font-family:'Almarai',sans-serif;font-weight:800;le
 .finale{position:relative;z-index:2;text-align:center;padding:96px 20px 6px;max-width:1280px;margin:0 auto}
 .fin-word{font-weight:700;letter-spacing:-.02em;line-height:1.02;font-size:clamp(3.2rem,11vw,7.6rem)}
 .fin-word.pain{color:var(--ink)}
-.fin-word.pain span{display:inline-block;transition:opacity .9s ease,filter .9s ease,transform .9s ease}
-.fin-word.pain span:nth-child(2){transition-delay:.14s}
-.fin-word.pain span:nth-child(3){transition-delay:.28s}
-.fin-word.pain span:nth-child(4){transition-delay:.42s}
+.fin-word.pain span{display:inline-block;transition:opacity .85s ease,filter .85s ease,transform .85s ease;transition-delay:.55s}
+.fin-word.pain span:nth-child(2){transition-delay:1s}
+.fin-word.pain span:nth-child(3){transition-delay:1.45s}
+.fin-word.pain span:nth-child(4){transition-delay:1.9s}
 .finale.gone .fin-word.pain span{opacity:0;filter:blur(12px);transform:translateY(-18px)}
 .fin-word.smile{color:var(--gold)}
 .fin-cap{color:var(--ink60);margin-top:20px;font-size:1.02rem}
@@ -1278,38 +1280,44 @@ setLang(LANG);
 (function(){
   const hero=document.querySelector('.hero'), spot=document.getElementById('spot');
   if(!hero||!spot) return;
-  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  let tx=70, ty=28, x=70, y=28, lastMove=0, vis=true, raf=null;
+  // JS drives the 520px glow disc in hero-relative pixels; the CSS left/top
+  // (50% / 34% + translate(-50%,-50%)) is the visible no-JS default position.
+  spot.style.left='0px'; spot.style.top='0px';
+  let ax=hero.clientWidth*.5, ay=Math.min(hero.clientHeight*.4,430);
+  let x=ax, y=ay, tx=ax, ty=ay, lastMove=0, vis=true, raf=null;
+  function place(){ spot.style.transform='translate('+x.toFixed(1)+'px,'+y.toFixed(1)+'px) translate(-50%,-50%)'; }
+  place();
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return; // static glow stays at hero centre
   function upd(cx,cy){
     const r=hero.getBoundingClientRect(); if(!r.width||!r.height) return;
-    tx=Math.min(100,Math.max(0,(cx-r.left)/r.width*100));
-    ty=Math.min(100,Math.max(0,(cy-r.top)/r.height*100));
+    tx=ax=Math.min(r.width,Math.max(0,cx-r.left));
+    ty=ay=Math.min(r.height,Math.max(0,cy-r.top));
     lastMove=performance.now();
   }
   hero.addEventListener('pointermove',e=>upd(e.clientX,e.clientY),{passive:true});
   hero.addEventListener('touchmove',e=>{ if(e.touches[0]) upd(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  addEventListener('resize',()=>{ const w=hero.clientWidth,h=hero.clientHeight;
+    tx=Math.min(tx,w); ty=Math.min(ty,h); ax=Math.min(ax,w); ay=Math.min(ay,h); },{passive:true});
   function loop(ts){
-    if(performance.now()-lastMove>2600){ tx=50+Math.sin(ts*.00021)*26; ty=34+Math.cos(ts*.00016)*14; }
-    x+=(tx-x)*.06; y+=(ty-y)*.06;
-    spot.style.setProperty('--sx',x.toFixed(2)+'%');
-    spot.style.setProperty('--sy',y.toFixed(2)+'%');
+    raf=null;
+    if(performance.now()-lastMove>2600){ tx=ax+Math.sin(ts*.00021)*90; ty=ay+Math.cos(ts*.00016)*55; }
+    x+=(tx-x)*.08; y+=(ty-y)*.08;
+    place();
     if(vis) raf=requestAnimationFrame(loop);
   }
-  const io=new IntersectionObserver(es=>es.forEach(e=>{
-    const was=vis; vis=e.isIntersecting;
-    if(vis&&!was){ cancelAnimationFrame(raf); raf=requestAnimationFrame(loop); }
-    if(!vis) cancelAnimationFrame(raf);
-  }),{threshold:0});
-  io.observe(hero);
-  raf=requestAnimationFrame(loop);
+  function start(){ if(raf===null&&vis) raf=requestAnimationFrame(loop); }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(es=>es.forEach(e=>{ vis=e.isIntersecting; if(vis) start(); }),{threshold:0}).observe(hero);
+  }
+  start();
 })();
 // ===== v16: finale PAIN -> SMILE (IntersectionObserver, fires once, never pinned) =====
 (function(){
   const f=document.getElementById('finale'); if(!f) return;
   if(!('IntersectionObserver' in window)) return;
   const io=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting){ f.classList.add('gone'); io.disconnect(); }
-  }),{threshold:.35});
+    if(e.isIntersecting&&e.intersectionRatio>=.6){ f.classList.add('gone'); io.disconnect(); }
+  }),{threshold:.6});
   io.observe(f);
 })();
 </script>
