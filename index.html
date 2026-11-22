@@ -259,6 +259,49 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
 .dots i{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.18)}
 .dots i.on{background:var(--gold)}
 .confetti{position:fixed;width:9px;height:9px;border-radius:2px;z-index:300;pointer-events:none}
+
+/* ===== v6 Magic-UI layer ===== */
+.meteor{position:absolute;width:110px;height:2px;border-radius:99px;pointer-events:none;z-index:1;
+  background:linear-gradient(90deg,rgba(232,207,143,.95),transparent);transform:rotate(-38deg);
+  animation:meteorFly 1.4s ease-out forwards}
+@keyframes meteorFly{0%{opacity:0;transform:rotate(-38deg) translateX(0)}12%{opacity:1}100%{opacity:0;transform:rotate(-38deg) translateX(-46vw)}}
+.beam{position:relative;overflow:hidden}
+.beam::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.6px;pointer-events:none;
+  background:conic-gradient(from var(--ba,0deg),transparent 0 72%,rgba(232,207,143,.95) 86%,transparent 100%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+  animation:beamSpin 5.5s linear infinite}
+@property --ba{syntax:'<angle>';initial-value:0deg;inherits:false}
+@keyframes beamSpin{to{--ba:360deg}}
+.shine{position:relative;overflow:hidden}
+.shine::after{content:'';position:absolute;top:0;bottom:0;width:45%;left:-70%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);transform:skewX(-20deg);animation:shineGo 3.4s ease-in-out infinite}
+@keyframes shineGo{0%,55%{left:-70%}90%,100%{left:130%}}
+.grad-text{background:linear-gradient(90deg,var(--gold),var(--gold2),#fff3d6,var(--gold));background-size:220% auto;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:gradMove 5s linear infinite}
+@keyframes gradMove{to{background-position:220% center}}
+.dock{display:flex;gap:10px;justify-content:center;align-items:flex-end;background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);border-radius:22px;padding:10px 14px;width:max-content;max-width:100%;margin:0 auto;flex-wrap:wrap}
+.dock a{display:flex;flex-direction:column;align-items:center;gap:2px;color:var(--muted);font-size:.68rem;font-weight:700;
+  transition:transform .18s ease;will-change:transform}
+.dock a .di{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;
+  background:linear-gradient(150deg,rgba(201,164,92,.25),rgba(14,124,134,.18));border:1px solid var(--line)}
+.dock a:hover{color:var(--gold2)}
+.orbit{position:absolute;border:1px dashed rgba(201,164,92,.3);border-radius:50%;pointer-events:none}
+.orbit i{position:absolute;font-style:normal;background:rgba(8,28,51,.92);border:1px solid var(--line);color:var(--gold2);
+  font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:999px;white-space:nowrap}
+.wrev span{opacity:.14;transition:opacity .4s}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.bento{grid-template-columns:1fr}}
+.bento .cell{background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:22px 18px;transition:.3s;position:relative;overflow:hidden}
+.bento .cell:hover{border-color:var(--line);transform:translateY(-4px)}
+.bento .big{grid-column:span 2}
+@media(max-width:520px){.bento .big{grid-column:span 1}}
+.bento .ic{font-size:1.7rem;margin-bottom:8px}
+.bento h3{color:#fff;font-size:1.05rem;margin-bottom:5px}
+.bento p{color:var(--muted);font-size:.9rem}
+.bento .bignum{font-size:2.5rem;font-weight:900;color:#fff;line-height:1.1}
+.bento .bignum i{font-style:normal;color:var(--gold)}
 </style>
 </head>
 <body>
@@ -285,11 +328,11 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
     <div>
       <div class="kicker">الموقع الرسمي</div>
       <h1 id="bigName">Mohamed <span class="gold">Abdelbadie</span></h1>
-      <div class="arname">د. محمد عبد البديع — طبيب أسنان عام</div>
+      <div class="arname grad-text">د. محمد عبد البديع — طبيب أسنان عام</div>
       <div class="roles"><span id="type"></span></div>
       <p class="lead">طبيب أسنان عام بخبرة تتجاوز خمس سنوات، متخصص في علاج الجذور الدقيق تحت الميكروسكوب وطب الأسنان التجميلي الترميمي. مؤسس ومدير طبي لمركز سمايل سنتر بديروط، ومصنّف لدى الهيئة السعودية للتخصصات الصحية.</p>
       <div class="cta">
-        <a class="btn gold magnet" href="#book">احجز موعدك</a>
+        <a class="btn gold magnet shine" href="#book">احجز موعدك</a>
         <a class="btn ghost magnet" href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener">السيرة المهنية — LinkedIn</a>
         <a class="btn ghost magnet" href="#" id="cvBtn">تحميل السيرة الذاتية PDF</a>
       </div>
@@ -304,7 +347,9 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
       <div class="phone-holder">
         <div class="float-chip chip1">Endodontics — علاج الجذور</div>
         <div class="float-chip chip2">SCFHS Classified ✓</div>
-        <div class="phone" id="phone">
+        <div class="orbit" id="orbit1" style="width:340px;height:340px;top:46%;left:50%;transform:translate(-50%,-50%)"><i data-oa="0">LinkedIn</i><i data-oa="180">GitHub</i></div>
+        <div class="orbit" id="orbit2" style="width:430px;height:430px;top:46%;left:50%;transform:translate(-50%,-50%)"><i data-oa="90">SCFHS</i><i data-oa="270">Smile Center</i></div>
+        <div class="phone beam" id="phone">
           <div class="notch"></div>
           <video id="heroVideo" autoplay muted loop playsinline></video>
         </div>
@@ -318,7 +363,7 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
 
 <section id="about">
   <div class="sec-head reveal"><div class="k">نبذة مهنية</div><h2>إتقان إكلينيكي… ورؤية تقنية</h2></div>
-  <p class="about-txt reveal">الدكتور <b>محمد عبد البديع</b>، حاصل على بكالوريوس طب وجراحة الفم والأسنان من جامعة سيناء عام ٢٠٢١. بدأ مسيرته في مستشفى ديروط المركزي ومستشفى غمرة العسكري، ثم مارس في مراكز خضر وعناية وابتسامة، قبل أن يؤسس <b>مركز سمايل سنتر</b> بديروط عام ٢٠٢٥ ويتولى إدارته الطبية. يحمل تصنيف الهيئة السعودية للتخصصات الصحية <b>SCFHS</b> وتحققًا إيجابيًا من DataFlow. وإلى جانب ممارسته الإكلينيكية، طوّر أنظمة برمجية متكاملة تخدم القطاع الطبي والتجاري، من أبرزها <b>منصة صيدلية بهبه</b> و<b>نظام الصواف للأقمشة</b>.</p>
+  <p class="about-txt reveal wrev" id="aboutTxt">الدكتور <b>محمد عبد البديع</b>، حاصل على بكالوريوس طب وجراحة الفم والأسنان من جامعة سيناء عام ٢٠٢١. بدأ مسيرته في مستشفى ديروط المركزي ومستشفى غمرة العسكري، ثم مارس في مراكز خضر وعناية وابتسامة، قبل أن يؤسس <b>مركز سمايل سنتر</b> بديروط عام ٢٠٢٥ ويتولى إدارته الطبية. يحمل تصنيف الهيئة السعودية للتخصصات الصحية <b>SCFHS</b> وتحققًا إيجابيًا من DataFlow. وإلى جانب ممارسته الإكلينيكية، طوّر أنظمة برمجية متكاملة تخدم القطاع الطبي والتجاري، من أبرزها <b>منصة صيدلية بهبه</b> و<b>نظام الصواف للأقمشة</b>.</p>
 </section>
 
 <section id="services">
@@ -416,11 +461,13 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
 
 <section>
   <div class="sec-head reveal"><div class="k">منهجية العمل</div><h2>ما يميز ممارستي</h2></div>
-  <div class="why">
-    <div class="cell reveal"><div class="ic">🔬</div><h3>الميكروسكوب الجراحي</h3><p>رؤية مكبرة تعني علاجًا أدق وحفاظًا أكبر على أنسجة السن.</p></div>
-    <div class="cell reveal"><div class="ic">📋</div><h3>بروتوكولات حديثة</h3><p>خطط علاج مبنية على أحدث الأدلة والبرامج التدريبية المعتمدة.</p></div>
-    <div class="cell reveal"><div class="ic">🎓</div><h3>تعليم مستمر</h3><p>أكثر من ٢٥ شهادة ودورة متخصصة بين ٢٠٢٠ و٢٠٢٦ — وما زال التطوير مستمرًا.</p></div>
-    <div class="cell reveal"><div class="ic">🤝</div><h3>متابعة شخصية</h3><p>شرح واضح لخطة العلاج ومتابعة بعد كل إجراء حتى اكتمال النتيجة.</p></div>
+  <div class="bento">
+    <div class="cell big reveal"><div class="ic">🔬</div><h3>الميكروسكوب الجراحي</h3><p>رؤية مكبرة حتى ٢٠ ضعفًا تعني علاجًا أدق لقنوات لا تُرى بالعين المجردة، وحفاظًا أكبر على أنسجة السن — وهو المعيار الذي تُبنى عليه كل حالة علاج جذور عندي.</p></div>
+    <div class="cell reveal"><div class="bignum">25<i>+</i></div><h3>شهادة تعليم مستمر</h3><p>بين ٢٠٢٠ و٢٠٢٦ — وما زال التطوير مستمرًا.</p></div>
+    <div class="cell reveal"><div class="ic">📋</div><h3>بروتوكولات حديثة</h3><p>خطط علاج مبنية على أحدث الأدلة والبرامج التدريبية المعتمدة عالميًا.</p></div>
+    <div class="cell reveal"><div class="ic">🤝</div><h3>متابعة شخصية</h3><p>شرح واضح لخطة العلاج قبل البدء، ومتابعة بعد كل إجراء حتى اكتمال النتيجة.</p></div>
+    <div class="cell big reveal"><div class="ic">🏥</div><h3>٤ مراكز وعيادات</h3><p>ممارسة موزعة بين مركزي الخاص Smile Center ومراكز خضر وعناية وابتسامة في ديروط — خبرة متراكمة من تنوّع الحالات والبيئات الإكلينيكية.</p></div>
+    <div class="cell reveal"><div class="bignum">5<i>+</i></div><h3>سنوات خبرة</h3><p>ممارسة إكلينيكية متواصلة منذ ٢٠٢١.</p></div>
   </div>
 </section>
 
@@ -528,7 +575,7 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
 </section>
 
 <section id="book">
-  <div class="book reveal">
+  <div class="book reveal beam">
     <h2>احجز موعدك</h2>
     <p>للحجز والاستفسارات الطبية، يسعدني تواصلكم عبر البريد الإلكتروني أو صفحاتي الرسمية.</p>
     <div class="cta" style="justify-content:center;margin-top:0">
@@ -554,14 +601,14 @@ h1 .ch{display:inline-block;opacity:0;transform:translateY(46px) rotate(4deg);an
 <section id="contact">
   <div class="sec-head reveal"><div class="k">تواصل</div><h2>حساباتي الرسمية</h2>
   <p>تابعني باسم واحد على جميع المنصات: Mohamed Abdelbadie</p></div>
-  <div class="social reveal">
-    <a href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://www.facebook.com/mohamedabdelbdie1" target="_blank" rel="noopener">Facebook Page</a>
-    <a href="https://www.facebook.com/1MohamedElmasry" target="_blank" rel="noopener">Facebook</a>
-    <a href="https://www.instagram.com/mohmed_abdelbdie" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.tiktok.com/@drmohmedabdelbide" target="_blank" rel="noopener">TikTok</a>
-    <a href="https://github.com/mohmed1995" target="_blank" rel="noopener">GitHub</a>
-    <a href="mailto:Mohmedabdelbdie@gmail.com">Email</a>
+  <div class="dock reveal" id="dock">
+    <a href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener"><span class="di">in</span>LinkedIn</a>
+    <a href="https://www.facebook.com/mohamedabdelbdie1" target="_blank" rel="noopener"><span class="di">f</span>Page</a>
+    <a href="https://www.facebook.com/1MohamedElmasry" target="_blank" rel="noopener"><span class="di">f</span>Facebook</a>
+    <a href="https://www.instagram.com/mohmed_abdelbdie" target="_blank" rel="noopener"><span class="di">◎</span>Instagram</a>
+    <a href="https://www.tiktok.com/@drmohmedabdelbide" target="_blank" rel="noopener"><span class="di">♪</span>TikTok</a>
+    <a href="https://github.com/mohmed1995" target="_blank" rel="noopener"><span class="di">&lt;/&gt;</span>GitHub</a>
+    <a href="mailto:Mohmedabdelbdie@gmail.com"><span class="di">✉</span>Email</a>
   </div>
 </section>
 
@@ -849,6 +896,81 @@ function burst(x,y){
       const r=T.getBoundingClientRect(); if(yes===0) burst(r.left+r.width/2, r.top);
     }
   }));
+})();
+</script>
+
+<script>
+// ===== v6 Magic-UI interactions =====
+// Meteors in hero
+(function(){
+  const hero=document.querySelector('.hero'); if(!hero) return;
+  function spawn(){
+    const m=document.createElement('span'); m.className='meteor';
+    m.style.top=(Math.random()*45)+'%'; m.style.left=(55+Math.random()*45)+'%';
+    hero.appendChild(m); setTimeout(()=>m.remove(),1500);
+    setTimeout(spawn, 1600+Math.random()*2600);
+  }
+  setTimeout(spawn, 1200);
+})();
+// Orbiting chips around the phone
+(function(){
+  function orbit(id, dur, dir){
+    const o=document.getElementById(id); if(!o) return;
+    const chips=[...o.querySelectorAll('i')]; const R=o.offsetWidth/2;
+    chips.forEach(ch=>{ ch.dataset.base=+ch.dataset.oa||0; });
+    (function anim(t){
+      chips.forEach(ch=>{
+        const a=(+ch.dataset.base + dir*(t/dur)*360)*Math.PI/180;
+        ch.style.left=(R+Math.cos(a)*R-30)+'px'; ch.style.top=(R+Math.sin(a)*R-11)+'px';
+      });
+      requestAnimationFrame(anim);
+    })(0);
+  }
+  orbit('orbit1', 26000, 1); orbit('orbit2', 40000, -1);
+})();
+// Dock magnification
+(function(){
+  const dock=document.getElementById('dock'); if(!dock||!matchMedia('(hover:hover)').matches) return;
+  const items=[...dock.querySelectorAll('a')];
+  dock.addEventListener('mousemove',e=>{
+    items.forEach(a=>{
+      const r=a.getBoundingClientRect(); const d=Math.abs(e.clientX-(r.left+r.width/2));
+      const s=Math.max(1, 1.45-(d/130)*0.45); a.style.transform=`scale(${Math.min(s,1.45)}) translateY(${-(Math.min(s,1.45)-1)*10}px)`;
+    });
+  });
+  dock.addEventListener('mouseleave',()=>items.forEach(a=>a.style.transform=''));
+})();
+// Hyper-text scramble on nav brand hover
+(function(){
+  const brand=document.querySelector('nav .brand'); if(!brand) return;
+  const original=brand.innerHTML; const chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#@%&';
+  let iv=null;
+  brand.addEventListener('mouseenter',()=>{
+    const text='Mohamed Abdelbadie'; let frame=0; clearInterval(iv);
+    iv=setInterval(()=>{
+      frame++;
+      brand.textContent=text.split('').map((c,i)=> i<frame/2 ? c : (c===' '?' ':chars[Math.floor(Math.random()*chars.length)])).join('');
+      if(frame/2>=text.length){ clearInterval(iv); brand.innerHTML=original; }
+    },34);
+  });
+})();
+// Word-by-word reveal for the about paragraph
+(function(){
+  const p=document.getElementById('aboutTxt'); if(!p) return;
+  const walk=(node)=>{ [...node.childNodes].forEach(ch=>{
+    if(ch.nodeType===3){ const frag=document.createDocumentFragment();
+      ch.textContent.split(/(\s+)/).forEach(w=>{ if(!w) return;
+        if(/^\s+$/.test(w)){ frag.appendChild(document.createTextNode(' ')); }
+        else { const s=document.createElement('span'); s.textContent=w; frag.appendChild(s); } });
+      node.replaceChild(frag,ch);
+    } else if(ch.nodeType===1) walk(ch);
+  });}; walk(p);
+  const words=[...p.querySelectorAll('span')];
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(!e.isIntersecting) return; io.disconnect();
+    words.forEach((w,i)=>setTimeout(()=>w.style.opacity=1, i*38));
+  }),{threshold:.35});
+  io.observe(p);
 })();
 </script>
 </body>
