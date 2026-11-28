@@ -426,6 +426,9 @@ html[lang="ar"] .sys-name{letter-spacing:0}
   .sys-feat-h{border-inline-start:0;border-top:1px solid var(--line-l);padding:15px 2px}
   .sys-feat-h:first-child{border-top:0}
 }
+
+/* ===== v20 fix: mobile topbar — mark only, no name collision ===== */
+@media(max-width:640px){.brand>span:not(.mark){display:none}.topbar{gap:10px}}
 </style>
 </head>
 <body>
