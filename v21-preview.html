@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Abdelbadie — Software Engineer | Business Applications & Telegram Bots</title>
+<meta name="description" content="Mohamed Abdelbadie builds premium business applications, Telegram bots, licensing systems and automation that run companies around the clock. Start a project via @DrBadieBot.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+<script>(function(){document.documentElement.classList.add('js');try{if(localStorage.getItem('mab-lang-v2')==='ar'){document.documentElement.lang='ar';document.documentElement.dir='rtl';}}catch(e){}})();</script>
+<style>
+:root{
+  --paper:#EAE8E8; --paper2:#E3E0DE; --ink:#424346; --ink2:#6B6E75; --dark:#24252E; --dark2:#1D1E26;
+  --line-l:rgba(66,67,70,.22); --line-d:rgba(255,255,255,.20); --pale:#C5C3C4; --faded:#CCCACB;
+  --bluegrey:#A8B0BE; --slate:#596273; --ivory:#E8E2D8; --white:#FFFFFF;
+  --serif:'Playfair Display',Georgia,serif; --sans:'Inter',Arial,sans-serif;
+}
+html[lang="ar"]{--serif:'Amiri',serif;--sans:'Almarai',sans-serif}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-weight:400;line-height:1.55;overflow-x:clip;-webkit-font-smoothing:antialiased}
+img,video{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:var(--ink);color:var(--paper)}
+.serif{font-family:var(--serif);font-weight:500;letter-spacing:-.015em}
+html[lang="ar"] .serif{letter-spacing:0}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+html[lang="ar"] .label{letter-spacing:.05em}
+.small-note{font-size:.92rem;color:var(--ink2)}
+.wrap{padding-inline:clamp(20px,4.2vw,60px)}
+.section{padding-block:clamp(76px,10vw,150px)}
+.light{background:var(--paper);color:var(--ink)}
+.dark{background:var(--dark);color:var(--white)}
+.hairline-t{border-top:1px solid var(--line-l)}
+.dark .hairline-t{border-top-color:var(--line-d)}
+
+/* ---------- reveal (fail-open) ---------- */
+html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity 1s cubic-bezier(.22,.61,.21,1),transform 1s cubic-bezier(.22,.61,.21,1)}
+html.js .reveal.inview{opacity:1;transform:none}
+html.js .scale-img{transform:scale(1.07);transition:transform 1.6s cubic-bezier(.22,.61,.21,1)}
+html.js .scale-img.inview{transform:scale(1)}
+
+/* ---------- pill buttons ---------- */
+.pill{display:inline-flex;align-items:center;gap:14px;min-height:50px;padding:7px 8px 7px 24px;background:var(--paper);color:var(--ink);border-radius:999px;font-weight:600;font-size:.98rem;line-height:1;transition:transform .35s ease,background .35s ease;white-space:nowrap}
+html[dir="rtl"] .pill{padding:7px 24px 7px 8px}
+.pill .plus{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--dark);color:#fff;display:grid;place-items:center;font-size:1.25rem;font-weight:400;transition:transform .35s ease}
+.pill:hover{transform:translateY(-2px)}
+.pill:hover .plus{transform:rotate(90deg)}
+.pill.on-dark{background:var(--paper);color:var(--ink)}
+.text-link{display:inline-flex;align-items:center;gap:8px;font-weight:600;border-bottom:1px solid currentColor;padding-bottom:3px;min-height:40px}
+.text-link:hover{opacity:.65}
+
+/* ---------- top bar ---------- */
+.topbar{position:absolute;top:0;inset-inline:0;z-index:60;display:flex;align-items:flex-start;justify-content:space-between;gap:18px;padding:22px clamp(20px,4.2vw,60px)}
+.brand{display:flex;align-items:center;gap:12px;color:var(--ink);min-width:0}
+.mark{flex:0 0 auto;width:44px;height:44px;border:1.6px solid currentColor;border-radius:50%;display:grid;place-items:center;font-family:var(--serif);font-size:1.3rem;line-height:1}
+.brand .bname{font-weight:800;font-size:.98rem;line-height:1.15;letter-spacing:-.01em}
+.brand .brole{font-size:.78rem;font-weight:600;opacity:.75;line-height:1.2}
+.top-actions{display:flex;align-items:center;gap:clamp(14px,2.6vw,38px);color:#fff}
+.top-actions .tlink{font-weight:600;font-size:.95rem;min-height:44px;display:inline-flex;align-items:center;gap:7px;text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.top-actions .loc{font-size:.85rem;font-weight:600;opacity:.9;text-shadow:0 1px 14px rgba(0,0,0,.35)}
+.lang-btn{font-weight:800;font-size:.9rem;min-width:44px;min-height:44px;border:1px solid rgba(255,255,255,.55);border-radius:999px;color:#fff;padding:6px 13px;text-shadow:none}
+.top-actions .pill{min-height:46px}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;grid-template-columns:1fr 1fr;background:var(--paper)}
+.hero-panel{background:var(--paper);position:relative}
+.hero-media{position:relative;min-height:100svh;overflow:hidden;background:var(--dark)}
+.hero-media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,37,46,.18),rgba(36,37,46,0) 35%,rgba(36,37,46,.22))}
+.hero-title{position:absolute;z-index:5;top:46%;left:50%;transform:translate(-50%,-50%);width:100%;text-align:center;color:#fff;mix-blend-mode:difference;pointer-events:none;font-family:var(--serif);font-weight:500;letter-spacing:-.045em;line-height:.84}
+.hero-title span{display:block;font-size:clamp(4.4rem,13.2vw,11.8rem)}
+.hero-title em{font-style:italic;font-weight:400}
+html[lang="ar"] .hero-title{letter-spacing:0;line-height:1.02}
+html[lang="ar"] .hero-title span{font-size:clamp(3.6rem,11vw,9.5rem)}
+.hero-based{position:absolute;z-index:6;bottom:34px;inset-inline-start:clamp(20px,4.2vw,60px);color:var(--ink)}
+.hero-based .blab{font-size:.85rem;margin-bottom:6px}
+.hero-based .bloc{font-weight:800;font-size:1.06rem;line-height:1.3}
+.hero-tag{position:absolute;z-index:6;bottom:34px;inset-inline-end:clamp(20px,4.2vw,60px);color:#fff;text-align:end;max-width:340px}
+.hero-tag .itag{font-family:var(--serif);font-style:italic;font-size:clamp(1.15rem,1.8vw,1.55rem);line-height:1.25}
+html[lang="ar"] .hero-tag .itag{font-style:normal}
+.hero-tag .btag{font-weight:800;font-size:.98rem;margin-top:10px;line-height:1.4}
+.hero-cat{position:absolute;z-index:6;top:38%;inset-inline-end:clamp(20px,4.2vw,60px);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;writing-mode:vertical-rl;opacity:.9}
+html[lang="ar"] .hero-cat{letter-spacing:.05em}
+
+/* ---------- goal ---------- */
+.goal-head{display:flex;align-items:baseline;gap:22px;margin-bottom:clamp(30px,5vw,64px)}
+.goal-grid{display:grid;grid-template-columns:.85fr 1fr 1.7fr;gap:clamp(24px,4vw,64px);align-items:start}
+.goal-title{font-size:clamp(2.6rem,5.2vw,5.4rem);line-height:.95}
+.goal-portrait{aspect-ratio:3/4.1;overflow:hidden;background:var(--paper2)}
+.goal-portrait img{width:100%;height:100%;object-fit:cover;filter:grayscale(1)}
+.goal-side .pre{font-size:clamp(1.02rem,1.35vw,1.2rem);line-height:1.65;max-width:520px;margin-bottom:30px}
+.statement{font-family:var(--serif);font-weight:500;font-size:clamp(1.9rem,3.55vw,3.9rem);line-height:1.13;letter-spacing:-.015em}
+html[lang="ar"] .statement{letter-spacing:0;line-height:1.45}
+.statement .w{transition:opacity .7s ease}
+html.js .statement .w{opacity:.14}
+html.js .statement.inview .w{opacity:1;transition-delay:var(--d,0s)}
+.goal-bottom{position:relative;margin-top:clamp(44px,6vw,84px);min-height:150px;border-top:1px solid var(--line-l);padding-top:28px}
+.cluster-mini{position:absolute;top:-58px;inset-inline-end:clamp(0px,8vw,140px);display:flex;align-items:center}
+.cluster-mini .cimg{width:104px;height:104px;border-radius:50%;object-fit:cover;border:3px solid var(--paper);margin-inline-start:-26px;background:var(--paper2)}
+.cluster-mini .cimg:first-child{margin-inline-start:0}
+.cluster-mini .cplus{width:104px;height:104px;border-radius:50%;background:var(--ivory);color:var(--ink);display:grid;place-items:center;text-align:center;border:3px solid var(--paper);margin-inline-start:-26px;font-family:var(--serif);font-size:1.7rem}
+.mini-cap{font-size:.8rem;color:var(--ink2);margin-top:8px;text-align:end}
+
+/* ---------- solutions ---------- */
+.sol-panel{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(26px,5vw,80px);padding-block:clamp(60px,8vw,120px);border-top:1px solid var(--line-d);align-items:center}
+.sol-panel:first-of-type{border-top:0}
+.sol-img{aspect-ratio:3/3.6;overflow:hidden;background:var(--dark2)}
+.sol-img img{width:100%;height:100%;object-fit:contain;background:var(--dark2);filter:grayscale(1)}
+.sol-body .label{color:var(--faded)}
+.sol-intro{font-weight:700;font-size:clamp(1.35rem,2.3vw,2rem);line-height:1.3;margin:18px 0 34px;max-width:560px}
+.sol-rows{border-bottom:1px solid var(--line-d)}
+.sol-row{display:flex;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid var(--line-d);padding:19px 2px;min-height:58px;font-size:clamp(1rem,1.4vw,1.18rem);font-weight:500;transition:padding .3s ease,color .3s ease}
+.sol-row:hover{color:var(--faded);padding-inline-start:10px}
+.sol-row .arr{font-size:1.1rem;opacity:.8}
+.sol-finale{position:relative;padding-block:clamp(70px,9vw,130px);border-top:1px solid var(--line-d);overflow:hidden}
+.sol-finale .big{font-family:var(--serif);font-weight:500;font-size:clamp(3.4rem,9.5vw,9rem);line-height:.92;letter-spacing:-.03em;position:relative;z-index:2}
+html[lang="ar"] .sol-finale .big{letter-spacing:0}
+.sol-finale .big em{font-style:italic}
+.sol-finale .fin-img{position:absolute;top:50%;inset-inline-end:clamp(0px,6vw,110px);transform:translateY(-50%);width:min(300px,32vw);aspect-ratio:3/3.8;object-fit:cover;filter:grayscale(1);opacity:.9}
+.sol-finale .fin-row{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-top:clamp(40px,6vw,80px);position:relative;z-index:2;flex-wrap:wrap}
+.grey-list{color:var(--ink2);font-size:.95rem;line-height:1.9}
+.dark .grey-list{color:#9BA0A8}
+
+/* ---------- technology ---------- */
+.tech-words{display:flex;flex-wrap:wrap;gap:10px 34px;font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.7rem);margin:16px 0 8px}
+.tech-head{font-size:clamp(2.7rem,6.4vw,6.6rem);line-height:.98;max-width:1100px}
+.tech-head em{font-style:italic}
+.tech-shell{display:grid;grid-template-columns:.75fr 1.05fr 1.25fr;gap:clamp(22px,4vw,60px);margin-top:clamp(36px,5vw,70px);border-top:1px solid var(--line-l)}
+.tech-counter{position:sticky;top:0;height:100vh;display:flex;align-items:center;font-family:var(--serif);font-size:clamp(3rem,6vw,6.2rem);font-weight:400;white-space:nowrap}
+.tech-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center}
+.tech-frame{position:relative;width:100%;aspect-ratio:3/3.4;overflow:hidden;background:var(--paper2)}
+.tech-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--paper2);opacity:0;transition:opacity .22s ease}
+.tech-frame img.on{opacity:1;transition:opacity .8s ease .18s}
+.tech-list{position:relative}
+.tech-more{position:absolute;top:18px;inset-inline-end:0;font-size:.9rem}
+.tech-item{min-height:76vh;display:flex;flex-direction:column;justify-content:center;border-bottom:1px solid var(--line-l);padding:30px 0}
+.tech-item h3{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,2.7vw,2.4rem);color:var(--pale);transition:color .5s ease;line-height:1.12}
+.tech-item p{margin-top:14px;color:var(--ink2);max-width:420px;opacity:0;transition:opacity .5s ease}
+.tech-item.on h3{color:var(--ink)}
+.tech-item.on p{opacity:1}
+
+/* ---------- work ---------- */
+.work-title{font-family:var(--serif);font-weight:500;font-size:clamp(3.6rem,11vw,11rem);line-height:.9;color:var(--paper);letter-spacing:-.03em;margin-bottom:clamp(36px,5vw,70px)}
+html[lang="ar"] .work-title{letter-spacing:0}
+.work-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(22px,3vw,44px);border-top:1px solid var(--line-d);padding-top:34px}
+.work-cell h3{font-size:1.12rem;font-weight:800;line-height:1.3}
+.work-cell .role{font-size:.82rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faded);margin:9px 0 12px}
+html[lang="ar"] .work-cell .role{letter-spacing:.03em}
+.work-cell p{font-size:.95rem;color:#C9CAD0;line-height:1.6}
+.work-foot{display:flex;justify-content:space-between;align-items:center;gap:22px;flex-wrap:wrap;margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--line-d);padding-top:30px}
+.work-foot .boldline{font-weight:800;font-size:clamp(1.15rem,2vw,1.6rem)}
+
+/* ---------- why / circles ---------- */
+.why-head{font-size:clamp(2.5rem,5.6vw,5.8rem);line-height:1.02;max-width:980px}
+.why-head em{font-style:italic}
+.why-head .thin{display:block;font-size:.52em;color:var(--faded)}
+.cluster{position:relative;max-width:1060px;height:640px;margin:clamp(30px,5vw,60px) auto 0}
+.stat-c{position:absolute;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px;color:var(--ink)}
+.stat-c .num{font-family:var(--serif);font-weight:500;line-height:.95}
+.stat-c .cap{font-size:.68rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;margin-top:10px;line-height:1.5;max-width:78%}
+html[lang="ar"] .stat-c .cap{letter-spacing:.02em}
+.c1{width:330px;height:330px;background:var(--ivory);top:30px;inset-inline-start:6%}
+.c1 .num{font-size:5.2rem}
+.c2{width:250px;height:250px;background:var(--bluegrey);top:0;inset-inline-start:38%}
+.c2 .num{font-size:3.4rem}
+.c3{width:215px;height:215px;background:var(--white);top:230px;inset-inline-start:34%}
+.c3 .num{font-size:3rem}
+.c4{width:265px;height:265px;background:var(--slate);color:#fff;top:150px;inset-inline-end:4%}
+.c4 .num{font-size:3.6rem}
+.c5{width:190px;height:190px;background:transparent;border:1px solid var(--line-d);color:#fff;top:400px;inset-inline-start:12%}
+.c5 .num{font-size:2.7rem}
+.arc{position:absolute;left:50%;transform:translateX(-50%);bottom:-30px;width:min(880px,92%);height:150px;border:1px solid var(--line-d);border-top:0;border-radius:0 0 50% 50%/0 0 100% 100%;opacity:.7}
+
+/* ---------- notes ---------- */
+.notes-grid{display:grid;grid-template-columns:300px 1fr;gap:clamp(28px,5vw,90px);margin-top:34px}
+.note-filters{display:flex;flex-direction:column}
+.note-btn{display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:start;border-top:1px solid var(--line-d);padding:19px 2px;min-height:58px;font-weight:600;color:#B9BBC2;transition:color .3s ease,padding .3s ease}
+.note-btn:last-child{border-bottom:1px solid var(--line-d)}
+.note-btn:hover{color:#fff}
+.note-btn.on{color:#fff;padding-inline-start:10px}
+.note-panel{display:none}
+.note-panel.on{display:block}
+.note-panel .np{font-weight:700;font-size:clamp(1.5rem,3vw,2.6rem);line-height:1.3;max-width:820px}
+.note-panel .ns{margin-top:20px;color:#B9BBC2;font-size:1.02rem;max-width:640px;line-height:1.7}
+
+/* ---------- closing ---------- */
+.closing{display:grid;grid-template-columns:.9fr 1.2fr;gap:clamp(26px,5vw,80px);align-items:center}
+.closing .cimg{aspect-ratio:3/3.7;overflow:hidden;background:var(--paper2)}
+.closing .cimg img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1)}
+.closing h2{font-size:clamp(3rem,7.4vw,7.4rem);line-height:.95}
+.closing h2 em{font-style:italic}
+.closing .cap{margin-top:26px;font-size:.95rem;color:var(--ink2)}
+
+/* ---------- footer ---------- */
+footer{background:var(--dark);color:#fff;overflow:hidden}
+.foot-word{font-family:var(--serif);font-weight:500;font-size:clamp(3.4rem,13.6vw,14.5rem);line-height:.82;text-align:center;letter-spacing:-.01em;padding-top:clamp(46px,6vw,80px);white-space:nowrap}
+.smile-arc{display:block;margin:6px auto 0;width:min(620px,70%)}
+.foot-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:clamp(30px,6vw,110px);padding-block:clamp(44px,6vw,80px);border-top:1px solid var(--line-d);margin-top:clamp(36px,5vw,64px)}
+.socials{display:flex;gap:12px}
+.soc{width:48px;height:48px;border:1px solid var(--line-d);border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:.85rem;transition:background .3s ease,color .3s ease}
+.soc:hover{background:var(--paper);color:var(--ink)}
+.foot-cta-line{font-family:var(--serif);font-size:clamp(1.7rem,3.2vw,2.8rem);line-height:1.15;margin-bottom:26px}
+.foot-cta-line em{font-style:italic}
+.pform{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pform input,.pform textarea{width:100%;background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:999px;color:#fff;padding:15px 22px;min-height:52px;font:inherit;outline:none}
+.pform input::placeholder,.pform textarea::placeholder{color:#A7AAB2}
+.pform input:focus,.pform textarea:focus{border-color:#fff}
+.pform .msg-wrap{grid-column:1/-1;position:relative}
+.pform textarea{border-radius:26px;min-height:110px;resize:vertical;padding-inline-end:86px}
+.send-c{position:absolute;top:50%;inset-inline-end:14px;transform:translateY(-50%);width:58px;height:58px;border-radius:50%;background:var(--paper);color:var(--ink);font-size:1.5rem;display:grid;place-items:center;transition:transform .3s ease}
+.send-c:hover{transform:translateY(-50%) scale(1.07)}
+.foot-alt{margin-top:20px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.dir-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(24px,4vw,60px);border-top:1px solid var(--line-d);padding-block:34px}
+.dir-grid h4{font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--faded);margin-bottom:16px}
+html[lang="ar"] .dir-grid h4{letter-spacing:.04em}
+.dir-grid a,.dir-grid span{display:block;padding:5px 0;color:#D7D8DC;font-size:.97rem}
+.dir-grid a:hover{color:#fff;text-decoration:underline;text-underline-offset:4px}
+.bottom-bar{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;border-top:1px solid var(--line-d);padding-block:20px;font-size:.85rem;color:#A7AAB2}
+
+/* ---------- menu overlay ---------- */
+.menu-ov{position:fixed;inset:0;z-index:100;background:var(--dark);color:#fff;overflow:auto;opacity:0;pointer-events:none;transition:opacity .45s ease}
+.menu-ov.open{opacity:1;pointer-events:auto}
+.menu-in{padding:26px clamp(20px,4.2vw,60px) 60px}
+.menu-top{display:flex;justify-content:space-between;align-items:flex-start}
+.menu-top .brand{color:#fff}
+.menu-close{font-size:2rem;line-height:1;min-width:48px;min-height:48px}
+.menu-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(28px,6vw,110px);margin-top:clamp(34px,6vw,80px)}
+.menu-serv .mrow{display:flex;align-items:center;gap:16px;border-top:1px solid var(--line-d);padding:16px 0}
+.menu-serv .mrow img{width:58px;height:58px;object-fit:cover;filter:grayscale(1)}
+.menu-serv .mrow span{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,2rem)}
+.menu-nav a{display:block;font-family:var(--serif);font-size:clamp(2.4rem,5.6vw,5.2rem);line-height:1.08;padding:8px 0;border-top:1px solid var(--line-d)}
+.menu-nav a:hover{color:var(--faded)}
+.menu-socials{margin-top:34px}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .goal-grid{grid-template-columns:1fr 1fr}
+  .goal-side{grid-column:1/-1}
+  .work-grid{grid-template-columns:1fr 1fr}
+  .tech-shell{grid-template-columns:1fr 1fr}
+  .tech-list{grid-column:1/-1}
+  .tech-item{min-height:52vh}
+  .cluster{height:600px}
+}
+@media(max-width:640px){
+  .topbar{padding-top:16px}
+  .brand{color:#fff;text-shadow:0 1px 14px rgba(0,0,0,.4)}
+  .brand .bname{font-size:.88rem}
+  .top-actions .tlink,.top-actions .loc{display:none}
+  .top-actions{gap:10px}
+  .top-actions .pill{padding-inline-start:16px;font-size:.88rem}
+  .hero{display:flex;flex-direction:column;min-height:100svh}
+  .hero-media{order:-1;min-height:46svh;height:46svh;flex:0 0 46svh}
+  .hero-panel{flex:1}
+  .hero-title{top:44svh;mix-blend-mode:normal}
+  .hero-title span{font-size:clamp(3.4rem,17.5vw,5.2rem);color:#fff;text-shadow:0 2px 30px rgba(36,37,46,.45)}
+  html[lang="ar"] .hero-title span{font-size:clamp(3rem,15.5vw,4.6rem)}
+  .hero-cat{display:none}
+  .hero-based{bottom:18px}
+  .hero-based .bloc{font-size:.95rem}
+  .hero-tag{bottom:18px;max-width:200px;color:var(--ink)}
+  .hero-tag .itag{font-size:1rem}
+  .hero-tag .btag{font-size:.82rem;margin-top:6px}
+  .goal-grid{grid-template-columns:1fr}
+  .goal-portrait{max-width:300px}
+  .cluster-mini{position:static;margin-top:26px}
+  .cluster-mini .cimg,.cluster-mini .cplus{width:78px;height:78px;margin-inline-start:-18px}
+  .mini-cap{text-align:start}
+  .sol-panel{grid-template-columns:1fr;padding-block:52px}
+  .sol-img{aspect-ratio:3/2.4}
+  .sol-finale .fin-img{position:static;transform:none;width:min(240px,70vw);margin-top:30px}
+  .tech-shell{grid-template-columns:1fr;margin-top:20px}
+  .tech-counter{position:sticky;top:0;height:auto;padding:14px 0;background:var(--paper);z-index:5;font-size:2.6rem}
+  .tech-stage{position:sticky;top:78px;height:auto;z-index:4;background:var(--paper);padding-bottom:10px}
+  .tech-frame{aspect-ratio:3/2.2}
+  .tech-item{min-height:48vh}
+  .work-grid{grid-template-columns:1fr}
+  .cluster{transform:scale(.42);transform-origin:top left;width:1060px;margin-inline-start:-48px;height:400px;margin-bottom:-225px}
+  html[dir="rtl"] .cluster{transform-origin:top right;margin-inline-start:0;margin-inline-end:-48px}
+  .notes-grid{grid-template-columns:1fr}
+  .closing{grid-template-columns:1fr}
+  .closing .cimg{max-width:320px}
+  .foot-grid{grid-template-columns:1fr}
+  .pform{grid-template-columns:1fr}
+  .dir-grid{grid-template-columns:1fr}
+  .menu-grid{grid-template-columns:1fr}
+  .foot-word{font-size:15.5vw}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html.js .reveal,html.js .scale-img{opacity:1;transform:none}
+  html.js .statement .w{opacity:1}
+}
+
+/* ===== v18: LIVE PROJECTS ===== */
+.live-title{font-family:"Playfair Display",serif;font-weight:500;font-size:clamp(52px,8.5vw,108px);line-height:1.02;color:#EAE8E8;margin:10px 0 34px}
+.live-title em{font-style:italic}
+.live-list{border-bottom:1px solid rgba(234,232,232,.18)}
+.live-row{display:flex;align-items:baseline;gap:18px;padding:26px 6px;border-top:1px solid rgba(234,232,232,.18);text-decoration:none;color:#EAE8E8;transition:padding .35s ease,background .35s ease}
+.live-row:hover{padding-left:20px;background:rgba(234,232,232,.04)}
+.live-name{font-family:"Playfair Display",serif;font-size:clamp(28px,4.2vw,50px);line-height:1.1;white-space:nowrap}
+.live-desc{margin-inline-start:auto;font-size:14px;color:#9a9da6;text-align:end}
+.live-arrow{font-size:26px;line-height:1;transition:transform .35s ease}
+.live-row:hover .live-arrow{transform:translate(4px,-4px)}
+.live-tag{font-size:11px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(234,232,232,.35);border-radius:999px;padding:5px 12px;color:#c9cbd2;white-space:nowrap}
+@media(max-width:700px){.live-row{flex-wrap:wrap}.live-desc{margin-inline-start:0;text-align:start;order:3;flex-basis:100%}.live-name{white-space:normal}}
+
+/* ===== v19: polish — focus, serif routing, balanced titles ===== */
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.dark :focus-visible,footer :focus-visible,.menu-ov :focus-visible,.toasts :focus-visible{outline-color:var(--paper)}
+.pform input:focus-visible,.pform textarea:focus-visible{outline:none}
+.live-title,.live-name{font-family:var(--serif);letter-spacing:-.02em}
+html[lang="ar"] .live-title,html[lang="ar"] .live-name{letter-spacing:0}
+.live-title,.buy-title,.tech-head,.why-head,.closing h2{text-wrap:balance}
+
+/* ===== v19: footer wordmark shimmer (the one motion flourish) ===== */
+@supports ((-webkit-background-clip:text) or (background-clip:text)){
+  .foot-word{background:linear-gradient(100deg,#fff 42%,#C9CAD0 50%,#fff 58%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent}
+  @media (prefers-reduced-motion:no-preference){.foot-word{animation:wordShimmer 9s ease-in-out infinite}}
+}
+@keyframes wordShimmer{0%{background-position:130% 0}60%{background-position:-130% 0}100%{background-position:-130% 0}}
+
+/* ===== v19: BUY & ACTIVATE ===== */
+.buy-title{font-size:clamp(2.9rem,7vw,7rem);line-height:1.02}
+.buy-title em{font-style:italic}
+html[lang="ar"] .buy-title{line-height:1.35}
+.buy-lead{margin-top:22px;font-size:clamp(1.02rem,1.5vw,1.2rem);color:#C9CAD0;max-width:640px;line-height:1.7}
+.steps{margin-top:clamp(42px,5vw,66px);border-bottom:1px solid var(--line-d)}
+.step{display:grid;grid-template-columns:120px 1fr;gap:clamp(18px,4vw,60px);padding:27px 2px;border-top:1px solid var(--line-d);align-items:baseline}
+.step .no{font-family:var(--serif);font-weight:400;font-size:clamp(1.9rem,3.4vw,3rem);line-height:1;color:var(--faded)}
+.step h3{font-size:clamp(1.25rem,2vw,1.7rem);font-weight:700;line-height:1.25}
+.step p{color:#B9BBC2;margin-top:7px;max-width:560px;line-height:1.65}
+.offers{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(26px,4vw,60px);margin-top:clamp(50px,6vw,86px);align-items:stretch}
+.offer-a{border-top:1px solid var(--line-d);padding-top:32px;display:flex;flex-direction:column}
+.offer-a .label{color:var(--faded)}
+.offer-a h3,.offer-b h3{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,3.6vw,3.2rem);line-height:1.05;margin-top:14px}
+.offer-a p{color:#C9CAD0;margin:18px 0 30px;line-height:1.7;max-width:480px}
+.offer-a .pill{margin-top:auto;align-self:flex-start}
+.offer-b{background:var(--ivory);color:var(--ink);border-radius:22px;padding:clamp(28px,3.4vw,46px);display:flex;flex-direction:column}
+.offer-b .label{color:var(--ink2)}
+.offer-b p{color:#55565C;margin:18px 0 30px;line-height:1.7}
+.offer-b .pill{margin-top:auto;align-self:flex-start;background:var(--dark);color:#fff}
+.offer-b .pill .plus{background:var(--paper);color:var(--ink)}
+
+/* ===== v19: toasts (Sonner-style stack) ===== */
+.toasts{position:fixed;left:50%;transform:translateX(-50%);bottom:20px;z-index:200;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;width:min(440px,calc(100vw - 32px))}
+.toast{pointer-events:auto;display:flex;align-items:center;gap:10px;background:var(--dark);color:var(--paper);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:13px 18px;font-size:.92rem;font-weight:600;line-height:1.35;text-align:center;box-shadow:0 18px 44px rgba(18,18,26,.38);opacity:0;transform:translateY(16px) scale(.97);transition:opacity .45s cubic-bezier(.2,.8,.25,1),transform .45s cubic-bezier(.2,.8,.25,1)}
+.toast svg{flex:0 0 auto;opacity:.85}
+.toast.show{opacity:1;transform:translateY(0) scale(1)}
+.toast.show:nth-last-child(2){transform:scale(.955);opacity:.82}
+.toast.show:nth-last-child(3){transform:scale(.91);opacity:.6}
+.toast.hide{opacity:0;transform:translateY(8px) scale(.97)}
+
+/* ===== v19: menu bottom sheet (mobile) ===== */
+.sheet-handle{display:none}
+@media(max-width:700px){
+  .offers{grid-template-columns:1fr}
+  .step{grid-template-columns:56px 1fr;gap:14px;padding:23px 0}
+  .menu-ov{background:rgba(18,18,25,0);overflow:hidden}
+  .menu-ov.open{background:rgba(18,18,25,.55)}
+  .menu-in{position:absolute;left:0;right:0;bottom:0;max-height:88svh;overflow:auto;background:var(--dark);border-radius:26px 26px 0 0;transform:translateY(103%);transition:transform .55s cubic-bezier(.32,.72,.24,1);padding-top:12px;box-shadow:0 -20px 60px rgba(0,0,0,.4)}
+  .menu-ov.open .menu-in{transform:translateY(0)}
+  .menu-in.dragging{transition:none}
+  .sheet-handle{display:flex;justify-content:center;padding:4px 0 12px;cursor:grab;touch-action:none}
+  .sheet-handle span{width:44px;height:5px;border-radius:99px;background:rgba(255,255,255,.35)}
+  .menu-grid{grid-template-columns:1fr}
+}
+
+/* ===== v20: marquee strip ===== */
+.marquee{background:var(--dark);color:var(--paper);overflow:hidden;padding-block:15px;direction:ltr}
+.marquee-track{display:flex;width:max-content;animation:mqScroll 42s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.mq-group{display:flex;align-items:center;flex:0 0 auto}
+.mq-item{font-size:.74rem;font-weight:700;letter-spacing:.26em;text-transform:uppercase;padding-inline:26px;white-space:nowrap}
+.mq-sep{font-size:.6rem;color:var(--faded);flex:0 0 auto}
+@keyframes mqScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ===== v20: hero quiet line ===== */
+.hero-line{margin-top:12px;font-size:.87rem;font-weight:500;color:var(--ink2);max-width:330px;line-height:1.55}
+
+/* ===== v20: SYSTEMS catalogue (light) ===== */
+.sys-title{font-size:clamp(2.9rem,7vw,6.4rem);line-height:1.02;text-wrap:balance}
+.sys-title em{font-style:italic}
+html[lang="ar"] .sys-title{line-height:1.3}
+.sys-list{margin-top:clamp(40px,5vw,64px);border-top:1px solid var(--line-l)}
+.sys-row{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,5vw,80px);padding-block:clamp(38px,4.6vw,60px);border-bottom:1px solid var(--line-l);align-items:start}
+.sys-row .label{color:var(--ink2)}
+.sys-name{font-family:var(--serif);font-weight:500;font-size:clamp(2.1rem,4.2vw,3.6rem);line-height:1.05;margin-top:12px;letter-spacing:-.02em}
+html[lang="ar"] .sys-name{letter-spacing:0}
+.sys-name em{font-style:italic}
+.sys-desc{margin-top:16px;color:var(--ink2);line-height:1.7;max-width:480px}
+.sys-cta{margin-top:26px}
+.sys-feats{border-bottom:1px solid var(--line-l)}
+.sys-feat{display:flex;align-items:center;gap:13px;border-top:1px solid var(--line-l);padding:15px 2px;font-weight:600;min-height:52px}
+.sys-feat::before{content:"";width:7px;height:7px;background:var(--ink);transform:rotate(45deg);flex:0 0 auto;opacity:.5}
+.sys-row-b{grid-template-columns:1fr}
+.sys-b-top{display:flex;justify-content:space-between;align-items:flex-end;gap:clamp(22px,4vw,60px);flex-wrap:wrap}
+.sys-b-top .sys-desc{margin-top:0;max-width:430px}
+.sys-feats-h{display:grid;grid-template-columns:repeat(3,1fr);margin-top:32px;border-top:1px solid var(--line-l)}
+.sys-feat-h{padding:18px 20px;font-weight:600;border-inline-start:1px solid var(--line-l)}
+.sys-feat-h:first-child{border-inline-start:0;padding-inline-start:2px}
+.sys-row-c{background:var(--ivory);border:0;border-radius:22px;padding:clamp(30px,4vw,52px);margin-top:clamp(36px,4.5vw,56px)}
+.sys-row-c .sys-feats,.sys-row-c .sys-feat{border-color:rgba(66,67,70,.18)}
+
+/* ===== v20: FAQ accordion (inside Buy & Activate) ===== */
+.faq{margin-top:clamp(54px,6vw,88px)}
+.faq .label{color:var(--faded)}
+.faq-list{margin-top:26px;border-bottom:1px solid var(--line-d)}
+.faq details{border-top:1px solid var(--line-d)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 2px;cursor:pointer;font-weight:700;font-size:clamp(1.04rem,1.6vw,1.28rem);line-height:1.35;min-height:44px;transition:color .3s ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary:hover{color:var(--faded)}
+.faq-x{flex:0 0 auto;font-family:var(--serif);font-size:1.55rem;font-weight:400;line-height:1;transition:transform .35s ease}
+.faq details[open ] .faq-x{transform:rotate(45deg)}
+.faq-a{padding:0 2px 26px;color:#B9BBC2;line-height:1.7;max-width:660px}
+
+@media(max-width:700px){
+  .hero-line{display:none}
+  .sys-row{grid-template-columns:1fr}
+  .sys-b-top .sys-desc{margin-top:16px}
+  .sys-feats-h{grid-template-columns:1fr}
+  .sys-feat-h{border-inline-start:0;border-top:1px solid var(--line-l);padding:15px 2px}
+  .sys-feat-h:first-child{border-top:0}
+}
+
+/* ===== v20 fix: mobile topbar — mark only, no name collision ===== */
+@media(max-width:640px){.brand>span:not(.mark){display:none}.topbar{gap:10px}}
+
+/* ===== v21: SYSTEMS image rows ===== */
+.sys-row-d{grid-template-columns:.74fr 1.26fr;align-items:center}
+.sys-row-e{grid-template-columns:1.26fr .74fr;align-items:center}
+.sys-feats-stack{margin-top:28px}
+.sys-shot{margin:0}
+.sys-shot-in{display:block;overflow:hidden;border:1px solid var(--line-l);padding:10px;background:var(--white)}
+.sys-shot img{width:100%;aspect-ratio:3/4.6;object-fit:cover;object-position:top;transition:transform .8s cubic-bezier(.22,.61,.21,1)}
+.sys-shot:hover img{transform:scale(1.02)}
+.sys-cap{margin-top:12px;font-size:.7rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink2)}
+html[lang="ar"] .sys-cap{letter-spacing:.03em}
+.sys-row-f{grid-template-columns:1fr}
+.sys-row-f .sys-desc{max-width:640px}
+.sys-feats-inline{display:flex;flex-wrap:wrap;gap:14px 32px;margin-top:28px;border-top:1px solid var(--line-l);padding-top:24px}
+.sys-feat-i{display:flex;align-items:center;gap:11px;font-weight:600}
+.sys-feat-i::before{content:"";width:7px;height:7px;background:var(--ink);transform:rotate(45deg);flex:0 0 auto;opacity:.5}
+
+/* ===== v21: THE FULL BENCH ===== */
+.bench-list{border-bottom:1px solid var(--line-d)}
+.bench-row{display:flex;align-items:baseline;gap:18px;padding:24px 6px;border-top:1px solid var(--line-d);color:var(--paper);transition:padding .35s ease,background .35s ease}
+.bench-row:hover{padding-inline-start:20px;background:rgba(234,232,232,.04)}
+.bench-name{font-family:var(--serif);font-weight:500;font-size:clamp(23px,3.2vw,38px);line-height:1.12;white-space:nowrap;letter-spacing:-.02em}
+html[lang="ar"] .bench-name{letter-spacing:0}
+.bench-desc{margin-inline-start:auto;font-size:.88rem;color:#9a9da6;text-align:end;max-width:520px;line-height:1.55}
+html[lang="ar"] .live-tag{letter-spacing:.02em}
+@media(max-width:700px){
+  .sys-row-d,.sys-row-e{grid-template-columns:1fr}
+  .sys-shot img{aspect-ratio:3/3.1}
+  .bench-row{flex-wrap:wrap}
+  .bench-name{white-space:normal}
+  .bench-desc{margin-inline-start:0;text-align:start;order:3;flex-basis:100%}
+}
+
+/* ===== v21: QA fixes ===== */
+/* F1: hero bottom-right scrim — calms the portrait video's baked-in subtitles behind the tagline */
+.hero-tag{isolation:isolate}
+.hero-tag::before{content:"";position:absolute;inset:-42px -58px -36px -58px;background:radial-gradient(120% 135% at 50% 60%,rgba(24,25,33,.66),rgba(24,25,33,0) 70%);z-index:-1;pointer-events:none}
+@media(max-width:640px){.hero-tag::before{display:none}}
+/* F4: Buy steps — 2x2 grid on desktop fills the measure; mobile keeps the stacked rows */
+@media(min-width:701px){
+  .steps{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(34px,5vw,84px)}
+  .step{grid-template-columns:88px 1fr}
+}
+/* F5: Bahbah strip gets the diamond markers + tighter row padding */
+.sys-row-b{padding-block:clamp(28px,3.4vw,44px)}
+.sys-feat-h{display:flex;align-items:center;gap:12px}
+.sys-feat-h::before{content:"";width:7px;height:7px;background:var(--ink);transform:rotate(45deg);flex:0 0 auto;opacity:.5}
+/* F7: Selected Work — less void at the section's end */
+#work{padding-bottom:clamp(46px,6vw,90px)}
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar">
+  <a class="brand" href="#home" aria-label="Mohamed Abdelbadie">
+    <span class="mark">M</span>
+    <span><span class="bname">Mohamed Abdelbadie</span><br><span class="brole" data-ar="مهندس برمجيات" data-en="Software Engineer">Software Engineer</span></span>
+  </a>
+  <nav class="top-actions">
+    <button class="tlink" id="menuOpen" type="button"><span data-ar="القائمة" data-en="Menu">Menu</span> <span aria-hidden="true">≡</span></button>
+    <a class="tlink" href="#solutions"><span data-ar="الخدمات" data-en="Services">Services</span> <span aria-hidden="true">⌄</span></a>
+    <a class="tlink" href="#work"><span data-ar="أعمالي" data-en="Work">Work</span> <span aria-hidden="true">↗</span></a>
+    <span class="loc" data-ar="ديروط، مصر" data-en="Dayrut, Egypt">Dayrut, Egypt</span>
+    <button class="lang-btn" id="langToggle" type="button">عربي</button>
+    <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="ابدأ مشروعك" data-en="Start a Project">Start a Project</span><span class="plus">+</span></a>
+  </nav>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="home">
+  <div class="hero-panel"></div>
+  <div class="hero-media">
+    <video id="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
+  </div>
+  <h1 class="hero-title">
+    <span data-ar="تطبيقات" data-en="Premium">Premium</span>
+    <span data-ar="تُبنى" data-en="Software">Software</span>
+    <span><em data-ar="بذوق" data-en="Craft">Craft</em></span>
+  </h1>
+  <div class="hero-cat" data-ar="تطبيقات أعمال" data-en="Business Applications">Business Applications</div>
+  <div class="hero-based">
+    <div class="blab" data-ar="مقيم في:" data-en="Based in:">Based in:</div>
+    <div class="bloc"><span data-ar="ديروط، مصر" data-en="Dayrut, Egypt">Dayrut, Egypt</span><br><span data-ar="وأعمل مع العالم كله" data-en="Working worldwide">Working worldwide</span></div>
+    <div class="hero-line" data-ar="أنظمة · بوتات · تفعيلات — صُنع في مصر، يشتغل في أي مكان" data-en="Systems · Bots · Activations — built in Egypt, working everywhere">Systems · Bots · Activations — built in Egypt, working everywhere</div>
+  </div>
+  <div class="hero-tag">
+    <div class="itag" data-ar="أنظمة جميلة بقدر ما هي موثوقة" data-en="Systems that are as beautiful as they are reliable">Systems that are as beautiful as they are reliable</div>
+    <div class="btag" data-ar="أجمع بين دقة الهندسة ولمسة الفنان." data-en="I combine engineering precision with an artist's touch.">I combine engineering precision with an artist's touch.</div>
+  </div>
+</section>
+
+
+<!-- ===================== MARQUEE (v20) ===================== -->
+<div class="marquee" dir="ltr" aria-hidden="true">
+  <div class="marquee-track">
+    <div class="mq-group">
+      <span class="mq-item">Store Systems</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Telegram Bots</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Activations</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Pharmacy Commerce</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Custom Software</span><span class="mq-sep">✦</span>
+    </div>
+    <div class="mq-group">
+      <span class="mq-item">Store Systems</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Telegram Bots</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Activations</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Pharmacy Commerce</span><span class="mq-sep">✦</span>
+      <span class="mq-item">Custom Software</span><span class="mq-sep">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== MY GOAL ===================== -->
+<section class="section light" id="about">
+  <div class="wrap">
+    <div class="goal-head reveal"><span class="label" data-ar="الهدف" data-en="The Goal">The Goal</span></div>
+    <div class="goal-grid">
+      <h2 class="serif goal-title reveal" data-ar="هدفي هو" data-en="My goal is">My goal is</h2>
+      <figure class="goal-portrait reveal"><img data-b64="profile.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Mohamed Abdelbadie" data-ar-alt="محمد عبد البديع" data-en-alt="Mohamed Abdelbadie"></figure>
+      <div class="goal-side">
+        <p class="pre reveal" data-ar="أنا طبيب أسنان أصبح مهندس برمجيات — تعلّمت الدقة عند الميكروسكوب، والذوق من شغف طويل بالتصميم. واليوم أبني الأنظمة التي تُدار عليها الشركات." data-en="I'm a dentist who became a software engineer — I learned precision at the microscope, and taste from a decade of design obsession. Now I build the systems businesses run on.">I'm a dentist who became a software engineer — I learned precision at the microscope, and taste from a decade of design obsession. Now I build the systems businesses run on.</p>
+        <p class="statement" id="goalStatement" data-ar="أن أبني برمجيات تُدير عملك بالكامل — المبيعات والمخزون والفريق والعملاء — بهندسة دقيقة وتصميم جميل، لتبيع أكثر وتُدير أقل." data-en="to build software that runs your entire business — sales, stock, people and customers — engineered precisely, designed beautifully, so you sell more and manage less.">to build software that runs your entire business — sales, stock, people and customers — engineered precisely, designed beautifully, so you sell more and manage less.</p>
+      </div>
+    </div>
+    <div class="goal-bottom reveal">
+      <a class="pill" href="#about" style="background:var(--dark);color:#fff"><span data-ar="عني" data-en="About Me">About Me</span><span class="plus" style="background:var(--paper);color:var(--ink)">+</span></a>
+      <div class="cluster-mini">
+        <img class="cimg" data-b64="work.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Work" data-ar-alt="أثناء العمل" data-en-alt="At work">
+        <img class="cimg" data-b64="clinic.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Clinic" data-ar-alt="العيادة" data-en-alt="Clinic">
+        <img class="cimg" data-b64="frame1.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Project" data-ar-alt="مشروع" data-en-alt="Project">
+        <span class="cplus">+ 5</span>
+      </div>
+      <div class="mini-cap" data-ar="أنظمة تعمل فعليًا الآن" data-en="systems in production">systems in production</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOLUTIONS ===================== -->
+<section class="section dark" id="solutions" style="padding-top:0">
+  <div class="wrap">
+    <article class="sol-panel">
+      <figure class="sol-img reveal"><img class="scale-img" data-b64="shot-sales.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Business applications" data-ar-alt="تطبيقات الأعمال" data-en-alt="Business applications"></figure>
+      <div class="sol-body reveal">
+        <div class="label" data-ar="حلولنا:" data-en="Our Solutions:">Our Solutions:</div>
+        <h2 class="serif" style="font-size:clamp(2.4rem,5vw,4.8rem);line-height:1;margin-top:14px"><span data-ar="تطبيقات" data-en="Business">Business</span> <em data-ar="الأعمال" data-en="Applications">Applications</em></h2>
+        <p class="sol-intro" data-ar="أنظمة متكاملة تُدير المحلات والصيدليات والمعامل — المبيعات والمخزون والورديات والتقارير في مكان واحد." data-en="Complete systems that run stores, pharmacies and labs — sales, stock, shifts and reports in one place.">Complete systems that run stores, pharmacies and labs — sales, stock, shifts and reports in one place.</p>
+        <div class="sol-rows">
+          <a class="sol-row" href="#contact"><span data-ar="أنظمة المحلات والتجزئة" data-en="Store &amp; Retail Systems">Store &amp; Retail Systems</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="منصات الصيدليات" data-en="Pharmacy Platforms">Pharmacy Platforms</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="بوابات معامل الأسنان" data-en="Dental Lab Portals">Dental Lab Portals</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="أنظمة الإدارة" data-en="Management Systems">Management Systems</span><span class="arr">↗</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sol-panel">
+      <figure class="sol-img reveal"><img class="scale-img" data-b64="shot-code.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Telegram bots" data-ar-alt="بوتات تيليجرام" data-en-alt="Telegram bots"></figure>
+      <div class="sol-body reveal">
+        <div class="label" data-ar="حلولنا:" data-en="Our Solutions:">Our Solutions:</div>
+        <h2 class="serif" style="font-size:clamp(2.4rem,5vw,4.8rem);line-height:1;margin-top:14px"><span data-ar="بوتات" data-en="Telegram">Telegram</span> <em data-ar="تيليجرام" data-en="Bots">Bots</em></h2>
+        <p class="sol-intro" data-ar="بوتات تبيع وتفعّل وتدعم العملاء وأنت نائم — عملك مفتوح على مدار الساعة." data-en="Bots that sell, activate and support while you sleep — your business, open around the clock.">Bots that sell, activate and support while you sleep — your business, open around the clock.</p>
+        <div class="sol-rows">
+          <a class="sol-row" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="بوتات الترخيص والتفعيل" data-en="Licensing &amp; Activation Bots">Licensing &amp; Activation Bots</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="بوتات البيع والطلبات" data-en="Sales &amp; Ordering Bots">Sales &amp; Ordering Bots</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="بوتات دعم العملاء" data-en="Customer Support Bots">Customer Support Bots</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="أتمتة واتساب" data-en="WhatsApp Automation">WhatsApp Automation</span><span class="arr">↗</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sol-panel">
+      <figure class="sol-img reveal"><img class="scale-img" data-b64="shot-admin.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Licensing and activation" data-ar-alt="الترخيص والتفعيل" data-en-alt="Licensing and activation"></figure>
+      <div class="sol-body reveal">
+        <div class="label" data-ar="حلولنا:" data-en="Our Solutions:">Our Solutions:</div>
+        <h2 class="serif" style="font-size:clamp(2.4rem,5vw,4.8rem);line-height:1;margin-top:14px"><span data-ar="الترخيص" data-en="Licensing &amp;">Licensing &amp;</span> <em data-ar="والتفعيل" data-en="Activation">Activation</em></h2>
+        <p class="sol-intro" data-ar="بِع برنامجك محميًا: تراخيص مرتبطة بالجهاز، واشتراكات وتحديثات تُسلَّم تلقائيًا." data-en="Sell your software protected: device-locked licences, subscriptions and updates, delivered automatically.">Sell your software protected: device-locked licences, subscriptions and updates, delivered automatically.</p>
+        <div class="sol-rows">
+          <a class="sol-row" href="#contact"><span data-ar="تراخيص مرتبطة بالجهاز" data-en="Device-Locked Licences">Device-Locked Licences</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="أكواد مدى الحياة والاشتراكات" data-en="Lifetime &amp; Subscription Codes">Lifetime &amp; Subscription Codes</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="تسليم التحديثات تلقائيًا" data-en="Automatic Update Delivery">Automatic Update Delivery</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="حماية ضد القرصنة" data-en="Anti-Piracy Protection">Anti-Piracy Protection</span><span class="arr">↗</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="sol-panel">
+      <figure class="sol-img reveal"><img class="scale-img" data-b64="shot-warehouse.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Beyond the product" data-ar-alt="ما بعد المنتج" data-en-alt="Beyond the product"></figure>
+      <div class="sol-body reveal">
+        <div class="label" data-ar="حلولنا:" data-en="Our Solutions:">Our Solutions:</div>
+        <h2 class="serif" style="font-size:clamp(2.4rem,5vw,4.8rem);line-height:1;margin-top:14px"><span data-ar="ما بعد" data-en="Beyond the">Beyond the</span> <em data-ar="المنتج" data-en="Product">Product</em></h2>
+        <p class="sol-intro" data-ar="المنتج هو البداية فقط — أبقى معك في التصميم والإطلاق والنمو." data-en="A product is the beginning — I stay for the design, the launch and the growth.">A product is the beginning — I stay for the design, the launch and the growth.</p>
+        <div class="sol-rows">
+          <a class="sol-row" href="#contact"><span data-ar="تصميم الواجهات" data-en="Interface Design">Interface Design</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="الإطلاق والتدريب" data-en="Launch &amp; Training">Launch &amp; Training</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="الصيانة والدعم" data-en="Maintenance &amp; Support">Maintenance &amp; Support</span><span class="arr">↗</span></a>
+          <a class="sol-row" href="#contact"><span data-ar="طلبات خاصة" data-en="Custom Requests">Custom Requests</span><span class="arr">↗</span></a>
+        </div>
+      </div>
+    </article>
+
+    <div class="sol-finale">
+      <div class="big"><span data-ar="حِرفة" data-en="Software">Software</span><br><em data-ar="البرمجيات" data-en="Craft">Craft</em></div>
+      <img class="fin-img" data-b64="profile.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Mohamed Abdelbadie" data-ar-alt="محمد عبد البديع" data-en-alt="Mohamed Abdelbadie">
+      <div class="fin-row">
+        <div class="grey-list">
+          <div data-ar="تطبيقات الأعمال" data-en="Business Applications">Business Applications</div>
+          <div data-ar="بوتات تيليجرام" data-en="Telegram Bots">Telegram Bots</div>
+          <div data-ar="الترخيص والتفعيل" data-en="Licensing &amp; Activation">Licensing &amp; Activation</div>
+          <div data-ar="التصميم والإطلاق والدعم" data-en="Design, Launch &amp; Support">Design, Launch &amp; Support</div>
+        </div>
+        <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="ابدأ مشروعك" data-en="Start a Project">Start a Project</span><span class="plus">+</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TECHNOLOGY ===================== -->
+<section class="section light" id="technology" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="label reveal" data-ar="هندسة حديثة:" data-en="Modern Engineering:">Modern Engineering:</div>
+    <div class="tech-words reveal"><span data-ar="أسرع" data-en="Faster">Faster</span><span>·</span><span data-ar="أذكى" data-en="Smarter">Smarter</span><span>·</span><span data-ar="يعمل دون اتصال أولًا" data-en="Offline-First">Offline-First</span><span>·</span><span data-ar="تقنية تقود كل شيء" data-en="Technology-Driven">Technology-Driven</span></div>
+    <h2 class="serif tech-head reveal"><span data-ar="تطوير تقوده التقنية" data-en="Technology-Driven">Technology-Driven</span><br><span data-ar="لنتائج" data-en="Development">Development</span> <em data-ar="استثنائية" data-en="for">for</em> <span data-ar="" data-en="Exceptional Results">Exceptional Results</span></h2>
+    <div class="tech-shell">
+      <div class="tech-counter" id="techCounter">01 / 06</div>
+      <div class="tech-stage"><div class="tech-frame" id="techFrame">
+        <img data-b64="shot-sales.jpg.b64" class="on" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Progressive Web Apps" data-ar-alt="تطبيقات ويب تقدمية" data-en-alt="Progressive Web Apps">
+        <img data-b64="shot-code.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Telegram Bot API" data-ar-alt="واجهة بوتات تيليجرام" data-en-alt="Telegram Bot API">
+        <img data-b64="shot-kanz.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Supabase Backends" data-ar-alt="خوادم Supabase" data-en-alt="Supabase Backends">
+        <img data-b64="shot-warehouse.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Offline-first desktop apps" data-ar-alt="تطبيقات سطح مكتب تعمل دون اتصال" data-en-alt="Offline-first desktop apps">
+        <img data-b64="shot-setup.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Cryptographic licensing" data-ar-alt="ترخيص مشفّر" data-en-alt="Cryptographic licensing">
+        <img data-b64="shot-receiving.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="WhatsApp automation" data-ar-alt="أتمتة واتساب" data-en-alt="WhatsApp automation">
+      </div></div>
+      <div class="tech-list" id="techList">
+        <a class="tech-more text-link" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اعرف أكثر" data-en="Learn More">Learn More</span></a>
+        <div class="tech-item on" data-i="0"><h3 data-ar="تطبيقات ويب تقدمية" data-en="Progressive Web Apps">Progressive Web Apps</h3><p data-ar="تطبيقات تُثبَّت كالتطبيقات الأصلية، تعمل على أي جهاز، وتفتح بسرعة حتى مع اتصال ضعيف." data-en="Installable apps that run on any device and open fast — even on a weak connection.">Installable apps that run on any device and open fast — even on a weak connection.</p></div>
+        <div class="tech-item" data-i="1"><h3 data-ar="واجهة بوتات تيليجرام" data-en="Telegram Bot API">Telegram Bot API</h3><p data-ar="بوتات تبيع وتفعّل وتصدر التراخيص وتسلّم التحديثات — تلقائيًا، وعلى مدار الساعة." data-en="Bots that sell, activate, issue licences and deliver updates — automatically, around the clock.">Bots that sell, activate, issue licences and deliver updates — automatically, around the clock.</p></div>
+        <div class="tech-item" data-i="2"><h3 data-ar="خوادم Supabase" data-en="Supabase Backends">Supabase Backends</h3><p data-ar="قواعد بيانات سحابية آمنة مع حسابات وصلاحيات ومزامنة لحظية بين كل فروعك." data-en="Secure cloud databases with accounts, permissions and live sync across every branch.">Secure cloud databases with accounts, permissions and live sync across every branch.</p></div>
+        <div class="tech-item" data-i="3"><h3 data-ar="تطبيقات سطح مكتب تعمل دون اتصال أولًا" data-en="Offline-First Desktop Apps">Offline-First Desktop Apps</h3><p data-ar="برامج نقطة بيع وإدارة لا تتوقف أبدًا — تعمل بكامل قوتها حتى لو انقطع الإنترنت." data-en="Point-of-sale and management software that never stops — full power even when the internet drops.">Point-of-sale and management software that never stops — full power even when the internet drops.</p></div>
+        <div class="tech-item" data-i="4"><h3 data-ar="ترخيص مشفّر" data-en="Cryptographic Licensing">Cryptographic Licensing</h3><p data-ar="مفاتيح موقّعة تشفيريًا ومرتبطة بالجهاز — لا تُنسخ ولا تُشارك ولا تُكسر بسهولة." data-en="Cryptographically signed, device-locked keys — they cannot be copied, shared or casually cracked.">Cryptographically signed, device-locked keys — they cannot be copied, shared or casually cracked.</p></div>
+        <div class="tech-item" data-i="5"><h3 data-ar="أتمتة واتساب" data-en="WhatsApp Automation">WhatsApp Automation</h3><p data-ar="ردود وطلبات وتأكيدات تلقائية على واتساب، بأسلوب بشري يبيع ويخدم عملاءك." data-en="Automatic replies, orders and confirmations on WhatsApp, in a human style that sells and serves.">Automatic replies, orders and confirmations on WhatsApp, in a human style that sells and serves.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SELECTED WORK ===================== -->
+<section class="section dark" id="work">
+  <div class="wrap">
+    <h2 class="work-title reveal" data-ar="أعمال مختارة" data-en="Selected Work">Selected Work</h2>
+    <div class="work-grid">
+      <div class="work-cell reveal"><h3 data-ar="الصوّاف" data-en="Al-Sawaf">Al-Sawaf</h3><div class="role" data-ar="نظام محل أقمشة" data-en="Fabric Store System">Fabric Store System</div><p data-ar="المبيعات والمخزون والورديات والترخيص لمحل أقمشة رجالية في ديروط — في استخدام يومي فعلي." data-en="Sales, stock, shifts and licensing for a menswear store in Dayrut — in daily use.">Sales, stock, shifts and licensing for a menswear store in Dayrut — in daily use.</p></div>
+      <div class="work-cell reveal"><h3 data-ar="صيدلية بحبح" data-en="Bahbah Pharmacy">Bahbah Pharmacy</h3><div class="role" data-ar="منصة تجارة" data-en="Commerce Platform">Commerce Platform</div><p data-ar="واجهة صيدلية تعمل ٢٤/٧ مع التوصيل والمخزون الحي وحسابات العملاء." data-en="A 24/7 pharmacy storefront with delivery, live stock and customer accounts.">A 24/7 pharmacy storefront with delivery, live stock and customer accounts.</p></div>
+      <div class="work-cell reveal"><h3 data-ar="ماستر آرت لاب" data-en="MASTER ART LAB">MASTER ART LAB</h3><div class="role" data-ar="بوابة معمل أسنان" data-en="Dental Lab Portal">Dental Lab Portal</div><p data-ar="متابعة الحالات ومطابقة درجات اللون وخط إنتاج معمل أسنان رقمي." data-en="Case tracking, shade matching and production pipeline for a digital dental lab.">Case tracking, shade matching and production pipeline for a digital dental lab.</p></div>
+      <div class="work-cell reveal"><h3 data-ar="DrBadieBot" data-en="DrBadieBot">DrBadieBot</h3><div class="role" data-ar="ترخيص عبر تيليجرام" data-en="Licensing on Telegram">Licensing on Telegram</div><p data-ar="البوت الذي يبيع برامجي ويفعّلها ويحدّثها تلقائيًا." data-en="The bot that sells, activates and updates my software automatically.">The bot that sells, activates and updates my software automatically.</p></div>
+      <div class="work-cell reveal"><h3 data-ar="منتصر — الوحش" data-en="Montaser — The Monster">Montaser — The Monster</h3><div class="role" data-ar="منصة كابتن جيم" data-en="Gym Captain PWA">Gym Captain PWA</div><p data-ar="اشتراكات شهرية وبرامج تدريب ومكتبة فيديو — كابتن واحد، علامة واحدة، تطبيق واحد." data-en="Monthly subscriptions, training programs and a video library — one captain, one brand, one app.">Monthly subscriptions, training programs and a video library — one captain, one brand, one app.</p></div>
+      <div class="work-cell reveal"><h3 data-ar="بوتات واتساب" data-en="WhatsApp Bots">WhatsApp Bots</h3><div class="role" data-ar="أتمتة صيدليات وعيادات" data-en="Pharmacy &amp; Clinic Automation">Pharmacy &amp; Clinic Automation</div><p data-ar="بوتات ترد على العملاء وتتذكرهم وتستقبل الطلبات على واتساب — شغالة فعليًا لصيدلية ومركز أسنان." data-en="Bots that answer customers, remember them and take orders on WhatsApp — live for a pharmacy and a dental centre.">Bots that answer customers, remember them and take orders on WhatsApp — live for a pharmacy and a dental centre.</p></div>
+    </div>
+    <div class="work-foot reveal">
+      <div class="boldline" data-ar="أنظمة مبنية يدويًا، تعمل فعليًا، وتكسب." data-en="Hand-built systems, in production, making money.">Hand-built systems, in production, making money.</div>
+      <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="شاهد كيف أعمل" data-en="See How I Work">See How I Work</span><span class="plus">+</span></a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===================== LIVE PROJECTS (v18) ===================== -->
+<section class="section dark hairline-t" id="live" style="padding-top:0">
+  <div class="wrap">
+    <div class="label reveal" data-ar="شغالة الآن على الإنترنت" data-en="Live on the Web">Live on the Web</div>
+    <h2 class="live-title reveal"><span data-ar="مشاريع" data-en="Live">Live</span> <em><span data-ar="حية" data-en="Projects">Projects</span></em></h2>
+    <div class="live-list">
+      <a class="live-row reveal" href="https://bahbahpharmacyonline.com" target="_blank" rel="noopener">
+        <span class="live-name" data-ar="صيدلية بحبح" data-en="Bahbah Pharmacy">Bahbah Pharmacy</span>
+        <span class="live-desc" data-ar="تجارة صيدلية تعمل ٢٤/٧ — ديروط" data-en="24/7 pharmacy commerce — Dayrut">24/7 pharmacy commerce — Dayrut</span>
+        <span class="live-arrow">↗</span>
+      </a>
+      <a class="live-row reveal" href="https://art-lab.hgxhgx1.workers.dev" target="_blank" rel="noopener">
+        <span class="live-name">MASTER ART LAB</span>
+        <span class="live-desc" data-ar="بوابة معمل أسنان رقمي — أسيوط" data-en="Digital dental lab portal — Assiut">Digital dental lab portal — Assiut</span>
+        <span class="live-arrow">↗</span>
+      </a>
+      <a class="live-row reveal" href="https://t.me/DrBadieBot" target="_blank" rel="noopener">
+        <span class="live-name">DrBadieBot</span>
+        <span class="live-desc" data-ar="بوت البيع والتفعيل والتحديث — تيليجرام" data-en="Sales, activation and updates bot — Telegram">Sales, activation and updates bot — Telegram</span>
+        <span class="live-arrow">↗</span>
+      </a>
+      <div class="live-row reveal">
+        <span class="live-name" data-ar="منتصر — الوحش" data-en="Montaser — The Monster">Montaser — The Monster</span>
+        <span class="live-desc" data-ar="منصة كابتن جيم باشتراكات شهرية" data-en="Gym captain platform with monthly subscriptions">Gym captain platform with monthly subscriptions</span>
+        <span class="live-tag">PWA</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ===================== SYSTEMS (v20) ===================== -->
+<section class="section light" id="systems">
+  <div class="wrap">
+    <div class="label reveal" data-ar="الكتالوج" data-en="The Catalogue">The Catalogue</div>
+    <h2 class="serif sys-title reveal"><span data-ar="أنظمة" data-en="Systems">Systems</span> <em><span data-ar="تُدير شغلك" data-en="that run your business">that run your business</span></em></h2>
+    <div class="sys-list">
+      <article class="sys-row reveal">
+        <div>
+          <div class="label" data-ar="نظام جاهز" data-en="Ready System">Ready System</div>
+          <h3 class="sys-name"><span data-ar="الصوّاف" data-en="Al-Sawaf">Al-Sawaf</span> <em data-ar="نظام المحلات" data-en="Store System">Store System</em></h3>
+          <p class="sys-desc" data-ar="إدارة متكاملة لمحلات الأقمشة والتجزئة — المبيعات والمخزون والمورّدون والورديات في مكان واحد." data-en="Complete fabric &amp; retail store management — sales, stock, suppliers and shifts in one place.">Complete fabric &amp; retail store management — sales, stock, suppliers and shifts in one place.</p>
+          <a class="text-link sys-cta" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اطلب عبر البوت" data-en="Order via the bot">Order via the bot</span> ↗</a>
+        </div>
+        <div class="sys-feats">
+          <div class="sys-feat"><span data-ar="مبيعات وفواتير" data-en="Sales &amp; invoicing">Sales &amp; invoicing</span></div>
+          <div class="sys-feat"><span data-ar="مخزون ومورّدون" data-en="Stock &amp; suppliers">Stock &amp; suppliers</span></div>
+          <div class="sys-feat"><span data-ar="ورديات وكاشير" data-en="Shifts &amp; cashiers">Shifts &amp; cashiers</span></div>
+        </div>
+      </article>
+      <article class="sys-row sys-row-b reveal">
+        <div class="sys-b-top">
+          <div>
+            <div class="label" data-ar="منصة تجارة" data-en="Commerce Platform">Commerce Platform</div>
+            <h3 class="sys-name"><span data-ar="بحبح" data-en="Bahbah">Bahbah</span> <em data-ar="نظام الصيدليات" data-en="Pharmacy System">Pharmacy System</em></h3>
+          </div>
+          <p class="sys-desc" data-ar="تجارة صيدلية وتوصيل على مدار الساعة — طلبات أونلاين ومخزون حي وحسابات عملاء." data-en="Pharmacy commerce &amp; delivery, open 24/7 — online ordering, live stock and customer accounts.">Pharmacy commerce &amp; delivery, open 24/7 — online ordering, live stock and customer accounts.</p>
+        </div>
+        <div class="sys-feats-h">
+          <div class="sys-feat-h"><span data-ar="واجهة بيع أونلاين" data-en="Online storefront">Online storefront</span></div>
+          <div class="sys-feat-h"><span data-ar="طلبات توصيل" data-en="Delivery orders">Delivery orders</span></div>
+          <div class="sys-feat-h"><span data-ar="مخزون حي" data-en="Live stock">Live stock</span></div>
+        </div>
+        <a class="text-link sys-cta" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اطلب عبر البوت" data-en="Order via the bot">Order via the bot</span> ↗</a>
+      </article>
+      <article class="sys-row sys-row-d reveal">
+        <figure class="sys-shot">
+          <span class="sys-shot-in"><img data-b64="shot-artlab.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="MASTER ART LAB control room" data-ar-alt="غرفة تحكم ماستر آرت لاب" data-en-alt="MASTER ART LAB control room"></span>
+          <figcaption class="sys-cap">MASTER ART LAB</figcaption>
+        </figure>
+        <div>
+          <div class="label" data-ar="بوابة معمل أسنان" data-en="Dental Lab Portal">Dental Lab Portal</div>
+          <h3 class="sys-name">MASTER <em>ART LAB</em></h3>
+          <p class="sys-desc" data-ar="غرفة عمليات معمل أسنان رقمي — كل حالة وكل درجة لون وكل مرحلة إنتاج، متابعة لحظيًا." data-en="A digital dental lab's operations room — every case, every shade, every production stage, tracked live.">A digital dental lab's operations room — every case, every shade, every production stage, tracked live.</p>
+          <div class="sys-feats sys-feats-stack">
+            <div class="sys-feat"><span data-ar="غرفة عمليات الحالات" data-en="Case operations room">Case operations room</span></div>
+            <div class="sys-feat"><span data-ar="تنبيهات واتساب وتيليجرام" data-en="WhatsApp &amp; Telegram alerts">WhatsApp &amp; Telegram alerts</span></div>
+            <div class="sys-feat"><span data-ar="بيانات إنتاج حية" data-en="Live production data">Live production data</span></div>
+          </div>
+          <a class="text-link sys-cta" href="https://art-lab.hgxhgx1.workers.dev" target="_blank" rel="noopener"><span data-ar="زور البوابة الحية" data-en="Visit the live portal">Visit the live portal</span> ↗</a>
+        </div>
+      </article>
+      <article class="sys-row sys-row-e reveal">
+        <div>
+          <div class="label" data-ar="تطبيق علامة جيم" data-en="Gym Brand App">Gym Brand App</div>
+          <h3 class="sys-name"><span data-ar="منتصر" data-en="Montaser">Montaser</span> <em data-ar="الوحش" data-en="The Monster">The Monster</em></h3>
+          <p class="sys-desc" data-ar="تطبيق العلامة الشخصية لكابتن جيم — برامج وفيديوهات واشتراكات شهرية." data-en="A gym captain's brand app — programs, videos and monthly subscriptions.">A gym captain's brand app — programs, videos and monthly subscriptions.</p>
+          <div class="sys-feats sys-feats-stack">
+            <div class="sys-feat"><span data-ar="اشتراكات شهرية" data-en="Monthly subscriptions">Monthly subscriptions</span></div>
+            <div class="sys-feat"><span data-ar="برامج ومكتبة فيديو" data-en="Programs &amp; video library">Programs &amp; video library</span></div>
+            <div class="sys-feat"><span data-ar="مبني حول علامة كابتن واحد" data-en="Built around one captain's brand">Built around one captain's brand</span></div>
+          </div>
+          <a class="text-link sys-cta" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اطلب عبر البوت" data-en="Order via the bot">Order via the bot</span> ↗</a>
+        </div>
+        <figure class="sys-shot">
+          <span class="sys-shot-in"><img data-b64="shot-montaser.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Montaser gym app" data-ar-alt="تطبيق جيم منتصر" data-en-alt="Montaser gym app"></span>
+          <figcaption class="sys-cap" data-ar="منتصر — الوحش" data-en="Montaser — The Monster">Montaser — The Monster</figcaption>
+        </figure>
+      </article>
+      <article class="sys-row sys-row-f reveal">
+        <div>
+          <div class="label" data-ar="أتمتة واتساب" data-en="WhatsApp Automation">WhatsApp Automation</div>
+          <h3 class="sys-name"><span data-ar="بوتات" data-en="WhatsApp">WhatsApp</span> <em data-ar="واتساب" data-en="Bots">Bots</em></h3>
+          <p class="sys-desc" data-ar="بوتات صيدليات وعيادات ترد وتتذكر وتبيع — بالعربي، زي الإنسان." data-en="Pharmacy and clinic bots that answer, remember and sell — in Arabic, like a human.">Pharmacy and clinic bots that answer, remember and sell — in Arabic, like a human.</p>
+        </div>
+        <div class="sys-feats-inline">
+          <span class="sys-feat-i"><span data-ar="تتذكر كل عميل" data-en="Remembers every customer">Remembers every customer</span></span>
+          <span class="sys-feat-i"><span data-ar="طلبات وحسابك على واتساب" data-en="Orders &amp; balance on WhatsApp">Orders &amp; balance on WhatsApp</span></span>
+          <span class="sys-feat-i"><span data-ar="شغالة لصيدلية بحبح ورويال دينتال" data-en="Running for Bahbah Pharmacy &amp; Royal Dental">Running for Bahbah Pharmacy &amp; Royal Dental</span></span>
+        </div>
+        <a class="text-link sys-cta" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اطلب عبر البوت" data-en="Order via the bot">Order via the bot</span> ↗</a>
+      </article>
+      <article class="sys-row sys-row-c reveal">
+        <div>
+          <div class="label" data-ar="يُبنى حسب الطلب" data-en="Built to Order">Built to Order</div>
+          <h3 class="sys-name"><span data-ar="نظام" data-en="Custom">Custom</span> <em data-ar="مخصوص" data-en="System">System</em></h3>
+          <p class="sys-desc" data-ar="شغلك بقواعدك — يُبنى حسب الطلب حول سير عملك، ويُفعَّل بنفس الطريقة." data-en="Your business, your rules — built to order around your workflow, and activated the same way.">Your business, your rules — built to order around your workflow, and activated the same way.</p>
+          <a class="text-link sys-cta" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="اطلب عبر البوت" data-en="Order via the bot">Order via the bot</span> ↗</a>
+        </div>
+        <div class="sys-feats">
+          <div class="sys-feat"><span data-ar="سير عملك الخاص" data-en="Your own workflow">Your own workflow</span></div>
+          <div class="sys-feat"><span data-ar="شاشاتك وقواعدك" data-en="Your screens &amp; rules">Your screens &amp; rules</span></div>
+          <div class="sys-feat"><span data-ar="تفعيل عبر البوت" data-en="Activated via the bot">Activated via the bot</span></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== BUY & ACTIVATE (v19) ===================== -->
+<section class="section dark hairline-t" id="buy" style="padding-top:clamp(48px,6vw,96px)">
+  <div class="wrap">
+    <div class="label reveal" style="color:var(--faded)" data-ar="التفعيل والشراء" data-en="Activations &amp; Purchasing">Activations &amp; Purchasing</div>
+    <h2 class="serif buy-title reveal"><span data-ar="اشتري. فعّل." data-en="Buy. Activate.">Buy. Activate.</span> <em><span data-ar="امتلكه." data-en="Own it.">Own it.</span></em></h2>
+    <p class="buy-lead reveal" data-ar="من أول رسالة حتى نظام يعمل — أربع خطوات، كلها داخل تيليجرام." data-en="From the first message to a running system — four steps, all inside Telegram.">From the first message to a running system — four steps, all inside Telegram.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="no">01</div><div><h3 data-ar="اختر نظامك" data-en="Choose your system">Choose your system</h3><p data-ar="أنظمة جاهزة أو بناء مخصوص" data-en="Ready systems or a custom build">Ready systems or a custom build</p></div></div>
+      <div class="step reveal"><div class="no">02</div><div><h3 data-ar="اطلب عبر البوت" data-en="Order through the bot">Order through the bot</h3><p data-ar="@DrBadieBot يستقبل طلبك في دقائق" data-en="@DrBadieBot takes your order in minutes">@DrBadieBot takes your order in minutes</p></div></div>
+      <div class="step reveal"><div class="no">03</div><div><h3 data-ar="استلم كود التفعيل" data-en="Get your activation code">Get your activation code</h3><p data-ar="مرتبط بجهازك، يوصلك فورًا" data-en="Device-locked, delivered instantly">Device-locked, delivered instantly</p></div></div>
+      <div class="step reveal"><div class="no">04</div><div><h3 data-ar="التحديثات توصلك" data-en="Updates come to you">Updates come to you</h3><p data-ar="الإصدارات الجديدة تلقائيًا" data-en="New versions delivered automatically">New versions delivered automatically</p></div></div>
+    </div>
+    <div class="offers">
+      <div class="offer-a reveal">
+        <div class="label" data-ar="جاهز للتشغيل" data-en="Ready to Run">Ready to Run</div>
+        <h3 data-ar="أنظمة جاهزة" data-en="Ready Systems">Ready Systems</h3>
+        <p data-ar="أنظمة محلات وصيدليات جاهزة اليوم — بترخيص لكل جهاز، مدى الحياة أو باشتراك، وتتفعّل لحظة ما تطلب." data-en="Store and pharmacy systems that are ready today — licensed per device, for a lifetime or by subscription, and activated the moment you order.">Store and pharmacy systems that are ready today — licensed per device, for a lifetime or by subscription, and activated the moment you order.</p>
+        <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="ابدأ على تيليجرام" data-en="Start on Telegram">Start on Telegram</span><span class="plus">+</span></a>
+      </div>
+      <div class="offer-b reveal">
+        <div class="label" data-ar="يُصنع حسب الطلب" data-en="Made to Order">Made to Order</div>
+        <h3 data-ar="أنظمة مخصوصة" data-en="Custom Systems">Custom Systems</h3>
+        <p data-ar="نظام يُبنى خصيصًا حول شغلك — سير عملك وشاشاتك وقواعدك — ويتسلّم ويتفعّل بنفس الطريقة، عبر البوت." data-en="A system built to order around your business — your workflow, your screens, your rules — delivered and activated the same way, through the bot.">A system built to order around your business — your workflow, your screens, your rules — delivered and activated the same way, through the bot.</p>
+        <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="ابدأ على تيليجرام" data-en="Start on Telegram">Start on Telegram</span><span class="plus">+</span></a>
+      </div>
+    </div>
+    <div class="faq reveal">
+      <div class="label" data-ar="أسئلة شائعة" data-en="Common Questions">Common Questions</div>
+      <div class="faq-list">
+        <details>
+          <summary><span data-ar="كيف يصلني كود التفعيل؟" data-en="How do I receive my activation code?">How do I receive my activation code?</span><span class="faq-x" aria-hidden="true">+</span></summary>
+          <p class="faq-a" data-ar="فورًا عبر البوت، بمجرد تأكيد طلبك." data-en="Instantly through the bot, right after your order is confirmed.">Instantly through the bot, right after your order is confirmed.</p>
+        </details>
+        <details>
+          <summary><span data-ar="هل الترخيص مرتبط بجهازي؟" data-en="Is the licence locked to my device?">Is the licence locked to my device?</span><span class="faq-x" aria-hidden="true">+</span></summary>
+          <p class="faq-a" data-ar="نعم — كل كود يُفعِّل جهازًا واحدًا، فتبقى نسختك خاصة بك." data-en="Yes — each code activates one device, which keeps your copy yours.">Yes — each code activates one device, which keeps your copy yours.</p>
+        </details>
+        <details>
+          <summary><span data-ar="مدى الحياة أم اشتراك؟" data-en="Lifetime or subscription?">Lifetime or subscription?</span><span class="faq-x" aria-hidden="true">+</span></summary>
+          <p class="faq-a" data-ar="كلاهما متاح — اختر ملكية مدى الحياة أو كود اشتراك." data-en="Both exist — choose lifetime ownership or a subscription code.">Both exist — choose lifetime ownership or a subscription code.</p>
+        </details>
+        <details>
+          <summary><span data-ar="وماذا عن التحديثات؟" data-en="What about updates?">What about updates?</span><span class="faq-x" aria-hidden="true">+</span></summary>
+          <p class="faq-a" data-ar="تصلك الإصدارات الجديدة تلقائيًا عبر البوت، وبياناتك تبقى ملكك." data-en="New versions are delivered automatically through the bot; your data stays yours.">New versions are delivered automatically through the bot; your data stays yours.</p>
+        </details>
+        <details>
+          <summary><span data-ar="ماذا لو غيّرت جهازي؟" data-en="What if I change my device?">What if I change my device?</span><span class="faq-x" aria-hidden="true">+</span></summary>
+          <p class="faq-a" data-ar="راسل البوت، وسيُنقل ترخيصك إلى جهازك الجديد." data-en="Message the bot and your licence is transferred.">Message the bot and your licence is transferred.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== THE FULL BENCH (v21) ===================== -->
+<section class="section dark hairline-t" id="more" style="padding-top:0">
+  <div class="wrap">
+    <div class="label reveal" data-ar="وباقي الشغل" data-en="Everything Else">Everything Else</div>
+    <h2 class="live-title reveal"><span data-ar="كل الشغل،" data-en="Every build,">Every build,</span> <em><span data-ar="على دكة واحدة" data-en="one bench.">one bench.</span></em></h2>
+    <div class="bench-list">
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="رويال دينتال سنتر" data-en="Royal Dental Center">Royal Dental Center</span>
+        <span class="bench-desc" data-ar="أتمتة حجوزات عبر واتساب لمركز أسنان بثلاثة فروع في أسيوط" data-en="WhatsApp booking automation for a 3-branch dental centre in Assiut">WhatsApp booking automation for a 3-branch dental centre in Assiut</span>
+        <span class="live-tag" data-ar="أتمتة" data-en="Automation">Automation</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="أورثو AUH للصدمات" data-en="Ortho AUH Trauma">Ortho AUH Trauma</span>
+        <span class="bench-desc" data-ar="تسجيل حالات الصدمات لمستشفى أسيوط الجامعي" data-en="Trauma case registration for Assiut University Hospital">Trauma case registration for Assiut University Hospital</span>
+        <span class="live-tag" data-ar="أنظمة طبية" data-en="Medical Systems">Medical Systems</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="سند" data-en="Sanad">Sanad</span>
+        <span class="bench-desc" data-ar="نظام بطاقات موحّد مع جرد بالكاميرا" data-en="Unified cards system with camera inventory">Unified cards system with camera inventory</span>
+        <span class="live-tag" data-ar="منتج" data-en="Product">Product</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="وصلي" data-en="Wasli">Wasli</span>
+        <span class="bench-desc" data-ar="أسطول كباتن وعمليات توصيل لبحبح" data-en="Courier fleet &amp; delivery operations for Bahbah">Courier fleet &amp; delivery operations for Bahbah</span>
+        <span class="live-tag" data-ar="لوجستيات" data-en="Logistics">Logistics</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="كاشف الغرسات" data-en="Implant Detector">Implant Detector</span>
+        <span class="bench-desc" data-ar="تعرّف بالذكاء الاصطناعي على غرسات الأسنان من الأشعة" data-en="AI recognition of dental implants from X-rays">AI recognition of dental implants from X-rays</span>
+        <span class="live-tag" data-ar="ذكاء اصطناعي · بحث وتطوير" data-en="AI · R&amp;D">AI · R&amp;D</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="بيريو AI" data-en="CBCT Perio AI">CBCT Perio AI</span>
+        <span class="bench-desc" data-ar="قياس وتصنيف آلي لأمراض اللثة من أشعة CBCT" data-en="Automated periodontal measurement &amp; staging from CBCT">Automated periodontal measurement &amp; staging from CBCT</span>
+        <span class="live-tag" data-ar="ذكاء اصطناعي · بحث وتطوير" data-en="AI · R&amp;D">AI · R&amp;D</span>
+      </div>
+      <div class="bench-row reveal">
+        <span class="bench-name" data-ar="استوديو الفيديو العربي" data-en="Arabic Video Studio">Arabic Video Studio</span>
+        <span class="bench-desc" data-ar="استوديو مصمم بهندسة الاحتفاظ لصناعة المقاطع العربية القصيرة" data-en="A retention-engineered studio for Arabic shorts">A retention-engineered studio for Arabic shorts</span>
+        <span class="live-tag" data-ar="أدوات صنّاع المحتوى" data-en="Creator Tools">Creator Tools</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY WORK WITH ME ===================== -->
+<section class="section dark hairline-t" id="why" style="padding-top:0">
+  <div class="wrap">
+    <h2 class="serif why-head reveal"><span class="thin" data-ar="لماذا تعمل معي؟" data-en="Why work with me?">Why work with me?</span><span data-ar="نحن هنا" data-en="We are here">We are here</span><br><span data-ar="لنبني" data-en="to Build Your">to Build Your</span> <em data-ar="نظامك" data-en="System">System</em></h2>
+    <div class="cluster reveal" aria-hidden="false">
+      <div class="stat-c c1"><div class="num">5</div><div class="cap" data-ar="أنظمة تعمل فعليًا الآن" data-en="Systems in production">Systems in production</div></div>
+      <div class="stat-c c2"><div class="num">24/7</div><div class="cap" data-ar="منصات تعمل دائمًا" data-en="Always-on platforms">Always-on platforms</div></div>
+      <div class="stat-c c3"><div class="num">3</div><div class="cap" data-ar="قطاعات: تجزئة · صيدليات · معامل أسنان" data-en="Industries served — retail · pharmacy · dental labs">Industries served — retail · pharmacy · dental labs</div></div>
+      <div class="stat-c c4"><div class="num">1</div><div class="cap" data-ar="مهندس واحد — تتعامل معه مباشرة" data-en="Engineer — you deal with him directly">Engineer — you deal with him directly</div></div>
+      <div class="stat-c c5"><div class="num">0</div><div class="cap" data-ar="قوالب — كل شيء مصمم خصيصًا" data-en="Templates — everything custom">Templates — everything custom</div></div>
+      <div class="arc"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FIELD NOTES ===================== -->
+<section class="section dark hairline-t" id="notes" style="padding-top:0">
+  <div class="wrap">
+    <div class="label reveal" style="color:var(--faded)" data-ar="ملاحظات ميدانية" data-en="Field Notes">Field Notes</div>
+    <div class="notes-grid">
+      <div class="note-filters reveal" role="tablist">
+        <button class="note-btn on" type="button" data-note="0"><span data-ar="الصوّاف" data-en="Al-Sawaf">Al-Sawaf</span><span>↗</span></button>
+        <button class="note-btn" type="button" data-note="1"><span data-ar="صيدلية بحبح" data-en="Bahbah Pharmacy">Bahbah Pharmacy</span><span>↗</span></button>
+        <button class="note-btn" type="button" data-note="2"><span data-ar="ماستر آرت لاب" data-en="MASTER ART LAB">MASTER ART LAB</span><span>↗</span></button>
+        <button class="note-btn" type="button" data-note="3"><span data-ar="DrBadieBot" data-en="DrBadieBot">DrBadieBot</span><span>↗</span></button>
+      </div>
+      <div class="reveal">
+        <div class="note-panel on">
+          <p class="np" data-ar="محل أقمشة في ديروط يُنهي كل عملية بيع ومرتجع ووردية على نظام الصوّاف، ومالكه يراقب أمواله من هاتفه — والنظام لم يخطئ في قرش واحد." data-en="A fabric store in Dayrut rings up every sale, return and shift on Al-Sawaf. The owner watches his money from his phone — the system has never missed a piastre.">A fabric store in Dayrut rings up every sale, return and shift on Al-Sawaf. The owner watches his money from his phone — the system has never missed a piastre.</p>
+          <p class="ns" data-ar="حسابات دقيقة حتى القرش، وكاشير لا يرى إلا يومه، وترخيص مرتبط بالجهاز يحمي المنتج أثناء بيعه." data-en="Accounts exact to the piastre, a cashier who sees only his own day, and device-locked licensing that protects the product as it sells.">Accounts exact to the piastre, a cashier who sees only his own day, and device-locked licensing that protects the product as it sells.</p>
+        </div>
+        <div class="note-panel">
+          <p class="np" data-ar="صيدلية بحبح تستقبل الطلبات على مدار الساعة: واجهة شراء وتوصيل ومخزون حي وحسابات عملاء — مبنية لتبيع بينما ينام الجميع." data-en="Bahbah Pharmacy takes orders around the clock: a storefront with delivery, live stock and customer accounts — built to sell while everyone sleeps.">Bahbah Pharmacy takes orders around the clock: a storefront with delivery, live stock and customer accounts — built to sell while everyone sleeps.</p>
+          <p class="ns" data-ar="المنصة تعمل فعليًا الآن، وبوت واتساب يرد على العملاء بأسلوب صيدلي بشري ويحوّل المحادثات إلى طلبات." data-en="The platform is in production today, with a WhatsApp bot that answers customers like a human pharmacist and turns conversations into orders.">The platform is in production today, with a WhatsApp bot that answers customers like a human pharmacist and turns conversations into orders.</p>
+        </div>
+        <div class="note-panel">
+          <p class="np" data-ar="ماستر آرت لاب أُعيد بناؤه على بنية سحابية حديثة: بوابة معمل أسنان رقمي بمتابعة حالات ومطابقة درجات وخط إنتاج منظم." data-en="MASTER ART LAB was rebuilt on a modern cloud backend: a digital dental lab portal with case tracking, shade matching and an organised production pipeline.">MASTER ART LAB was rebuilt on a modern cloud backend: a digital dental lab portal with case tracking, shade matching and an organised production pipeline.</p>
+          <p class="ns" data-ar="قاعدة بيانات مستقلة تمامًا، وصلاحيات لكل دور، وأسعار حقيقية منشورة كما هي — لا أرقام مخترعة." data-en="A fully independent database, role-based permissions, and the lab's real published prices carried over exactly — no invented numbers.">A fully independent database, role-based permissions, and the lab's real published prices carried over exactly — no invented numbers.</p>
+        </div>
+        <div class="note-panel">
+          <p class="np" data-ar="DrBadieBot يصدر تراخيص مدى الحياة تتحقق منها البرامج نفسها بتوقيعها المشفّر — البيع والتفعيل والتحديث يحدثون تلقائيًا داخل تيليجرام." data-en="DrBadieBot issues lifetime licences that the programs themselves verify against their cryptographic signature — selling, activation and updates happen automatically inside Telegram.">DrBadieBot issues lifetime licences that the programs themselves verify against their cryptographic signature — selling, activation and updates happen automatically inside Telegram.</p>
+          <p class="ns" data-ar="جرّبه بنفسك: ابدأ محادثة مع البوت وسترى كيف تتحول عملية شراء كاملة إلى رسائل بسيطة." data-en="Try it yourself: start a chat with the bot and watch a complete purchase turn into a few simple messages.">Try it yourself: start a chat with the bot and watch a complete purchase turn into a few simple messages.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CLOSING CTA ===================== -->
+<section class="section light" id="closing">
+  <div class="wrap closing">
+    <figure class="cimg reveal"><img class="scale-img" data-b64="profile.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Mohamed Abdelbadie" data-ar-alt="محمد عبد البديع" data-en-alt="Mohamed Abdelbadie"></figure>
+    <div class="reveal">
+      <h2 class="serif"><span data-ar="نُحيي" data-en="Bringing">Bringing</span><br><span data-ar="منتجك" data-en="Your Next">Your Next</span><br><em data-ar="القادم" data-en="Product">Product</em><br><span data-ar="على أرض الواقع" data-en="to">to</span> <em data-ar="" data-en="Life">Life</em></h2>
+      <p class="cap" data-ar="حِرفة برمجيات فاخرة — محمد عبد البديع" data-en="Premium software craft — Mohamed Abdelbadie">Premium software craft — Mohamed Abdelbadie</p>
+      <p style="margin-top:26px"><a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener" style="background:var(--dark);color:#fff"><span data-ar="ابدأ مشروعك" data-en="Start a Project">Start a Project</span><span class="plus" style="background:var(--paper);color:var(--ink)">+</span></a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer id="contact">
+  <div class="wrap">
+    <div class="foot-word">ABDELBADIE</div>
+    <svg class="smile-arc" viewBox="0 0 620 60" fill="none" aria-hidden="true"><path d="M10 6 Q310 96 610 6" stroke="#EAE8E8" stroke-width="1.4" opacity=".65"/></svg>
+    <div class="foot-grid">
+      <div>
+        <div class="socials">
+          <a class="soc" href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="soc" href="https://instagram.com/mohmed_abdelbdie" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a class="soc" href="https://t.me/DrBadieBot" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+        </div>
+        <p style="margin-top:26px;color:#A7AAB2;max-width:320px" data-ar="مهندس واحد، من أول فكرة حتى الإطلاق والدعم — تتعامل معه مباشرة في كل خطوة." data-en="One engineer, from first idea to launch and support — you deal with him directly at every step.">One engineer, from first idea to launch and support — you deal with him directly at every step.</p>
+      </div>
+      <div>
+        <div class="foot-cta-line"><span data-ar="جاهز لبناء نظامك؟" data-en="Ready to build your system?">Ready to build your system?</span> <em data-ar="ابدأ مشروعك." data-en="Start a project.">Start a project.</em></div>
+        <form class="pform" id="projectForm">
+          <input type="text" id="pfName" autocomplete="name" data-ar-ph="الاسم" data-en-ph="Name" placeholder="Name">
+          <input type="tel" id="pfPhone" autocomplete="tel" data-ar-ph="رقم الهاتف" data-en-ph="Phone number" placeholder="Phone number">
+          <div class="msg-wrap">
+            <textarea id="pfMsg" rows="3" data-ar-ph="رسالتك — ما الذي تريد بناءه؟" data-en-ph="Message — what do you want to build?" placeholder="Message — what do you want to build?"></textarea>
+            <button class="send-c" type="submit" aria-label="Send">›</button>
+          </div>
+        </form>
+        <div class="foot-alt">
+          <span style="color:#A7AAB2" data-ar="أو ابدأ فورًا على تيليجرام" data-en="Or start instantly on Telegram">Or start instantly on Telegram</span>
+          <a class="pill" href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="ابدأ على تيليجرام" data-en="Start on Telegram">Start on Telegram</span><span class="plus">+</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="dir-grid">
+      <div>
+        <h4 data-ar="الخدمات" data-en="Services">Services</h4>
+        <a href="#solutions" data-ar="تطبيقات الأعمال" data-en="Business Applications">Business Applications</a>
+        <a href="#solutions" data-ar="بوتات تيليجرام" data-en="Telegram Bots">Telegram Bots</a>
+        <a href="#solutions" data-ar="الترخيص والتفعيل" data-en="Licensing &amp; Activation">Licensing &amp; Activation</a>
+        <a href="#solutions" data-ar="ما بعد المنتج" data-en="Beyond the Product">Beyond the Product</a>
+      </div>
+      <div>
+        <h4 data-ar="الاستوديو" data-en="Studio">Studio</h4>
+        <a href="#home" data-ar="الرئيسية" data-en="Home">Home</a>
+        <a href="#work" data-ar="أعمال مختارة" data-en="Selected Work">Selected Work</a>
+        <a href="#technology" data-ar="التقنية" data-en="Technology">Technology</a>
+        <a href="#buy" data-ar="الشراء والتفعيل" data-en="Buy &amp; Activate">Buy &amp; Activate</a>
+        <a href="#more" data-ar="الدكة الكاملة" data-en="The Full Bench">The Full Bench</a>
+        <a href="#contact" data-ar="تواصل" data-en="Contact">Contact</a>
+      </div>
+      <div>
+        <h4 data-ar="تواصل" data-en="Contact">Contact</h4>
+        <span data-ar="ديروط، مصر" data-en="Dayrut, Egypt">Dayrut, Egypt</span>
+        <a href="mailto:Mohmedabdelbdie@gmail.com">Mohmedabdelbdie@gmail.com</a>
+        <a href="https://t.me/DrBadieBot" target="_blank" rel="noopener"><span data-ar="تيليجرام" data-en="Telegram">Telegram</span> @DrBadieBot</a>
+      </div>
+    </div>
+    <div class="bottom-bar">
+      <span data-ar="حقوق النشر © 2026 محمد عبد البديع" data-en="Copyright © 2026 Mohamed Abdelbadie">Copyright © 2026 Mohamed Abdelbadie</span>
+      <span><a href="#" data-ar="الخصوصية" data-en="Privacy">Privacy</a> · <a href="#" data-ar="الشروط" data-en="Terms">Terms</a></span>
+      <span data-ar="صمّمه وبناه محمد عبد البديع" data-en="Designed &amp; built by Mohamed Abdelbadie">Designed &amp; built by Mohamed Abdelbadie</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== MENU OVERLAY ===================== -->
+<div class="menu-ov" id="menuOv" aria-hidden="true">
+  <div class="menu-in">
+    <div class="sheet-handle" id="sheetHandle" aria-hidden="true"><span></span></div>
+    <div class="menu-top">
+      <span class="brand"><span class="mark">M</span><span><span class="bname">Mohamed Abdelbadie</span><br><span class="brole" data-ar="مهندس برمجيات" data-en="Software Engineer">Software Engineer</span></span></span>
+      <button class="menu-close" id="menuClose" type="button" aria-label="Close">×</button>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-serv">
+        <div class="label" style="color:var(--faded);margin-bottom:8px" data-ar="الخدمات:" data-en="Services:">Services:</div>
+        <div class="mrow"><img data-b64="shot-kanz.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><span data-ar="تطبيقات الأعمال" data-en="Business Applications">Business Applications</span></div>
+        <div class="mrow"><img data-b64="shot-code.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><span data-ar="بوتات تيليجرام" data-en="Telegram Bots">Telegram Bots</span></div>
+        <div class="mrow"><img data-b64="shot-admin.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><span data-ar="الترخيص والتفعيل" data-en="Licensing &amp; Activation">Licensing &amp; Activation</span></div>
+        <div class="mrow"><img data-b64="shot-warehouse.jpg.b64" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=""><span data-ar="ما بعد المنتج" data-en="Beyond the Product">Beyond the Product</span></div>
+        <div class="socials menu-socials">
+          <a class="soc" href="https://www.linkedin.com/in/dr-mohamed-abdelbadie" target="_blank" rel="noopener" aria-label="LinkedIn">in</a>
+          <a class="soc" href="https://instagram.com/mohmed_abdelbdie" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a class="soc" href="https://t.me/DrBadieBot" target="_blank" rel="noopener" aria-label="Telegram">TG</a>
+        </div>
+      </div>
+      <nav class="menu-nav">
+        <a href="#work" data-ar="أعمال مختارة" data-en="Selected Work">Selected Work</a>
+        <a href="#buy" data-ar="الشراء والتفعيل" data-en="Buy &amp; Activate">Buy &amp; Activate</a>
+        <a href="#more" data-ar="الدكة الكاملة" data-en="The Full Bench">The Full Bench</a>
+        <a href="#technology" data-ar="التقنية" data-en="Technology">Technology</a>
+        <a href="#about" data-ar="عني" data-en="About">About</a>
+        <a href="#contact" data-ar="تواصل" data-en="Contact">Contact</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+
+<script>
+/* ================= media loader (repo stores media as .b64 text) ================= */
+function b64ToBlobUrl(b64,type){const bin=atob(b64.trim());const bytes=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);return URL.createObjectURL(new Blob([bytes],{type}));}
+document.querySelectorAll('img[data-b64]').forEach(function(img){fetch(img.dataset.b64).then(function(r){return r.text();}).then(function(t){img.src=b64ToBlobUrl(t,'image/jpeg');}).catch(function(){});});
+fetch('hero.mp4.b64').then(function(r){return r.text();}).then(function(t){var v=document.getElementById('heroVideo');if(v){v.src=b64ToBlobUrl(t,'video/mp4');v.play().catch(function(){});}}).catch(function(){});
+fetch('profile.jpg.b64').then(function(r){return r.text();}).then(function(t){var v=document.getElementById('heroVideo');if(v)v.poster=b64ToBlobUrl(t,'image/jpeg');}).catch(function(){});
+
+/* ================= language ================= */
+var LANG='en';
+var TITLES={ar:'محمد عبد البديع — مهندس برمجيات | تطبيقات أعمال وبوتات تيليجرام',en:'Mohamed Abdelbadie — Software Engineer | Business Applications & Telegram Bots'};
+var DESCS={ar:'محمد عبد البديع يبني تطبيقات أعمال فاخرة وبوتات تيليجرام وأنظمة ترخيص وأتمتة تعمل على مدار الساعة. ابدأ مشروعك عبر DrBadieBot.',en:'Mohamed Abdelbadie builds premium business applications, Telegram bots, licensing systems and automation that run companies around the clock. Start a project via @DrBadieBot.'};
+var __hooks=[];
+function splitStatement(){
+  var st=document.getElementById('goalStatement');if(!st)return;
+  var words=st.textContent.trim().split(/\s+/);
+  st.innerHTML=words.map(function(w,i){return '<span class="w" style="--d:'+(i*0.055)+'s">'+w+'</span>';}).join(' ');
+}
+function setLang(l){
+  LANG=l;
+  try{localStorage.setItem('mab-lang-v2',l);}catch(e){}
+  document.documentElement.lang=l;
+  document.documentElement.dir=(l==='ar')?'rtl':'ltr';
+  document.title=TITLES[l];
+  var md=document.querySelector('meta[name="description"]');if(md)md.setAttribute('content',DESCS[l]);
+  document.querySelectorAll('[data-ar]').forEach(function(el){el.innerHTML=el.dataset[l];});
+  document.querySelectorAll('[data-ar-alt]').forEach(function(el){el.alt=el.dataset[l+'Alt'];});
+  document.querySelectorAll('[data-ar-ph]').forEach(function(el){el.placeholder=el.dataset[l+'Ph'];});
+  var tg=document.getElementById('langToggle');if(tg)tg.textContent=(l==='ar')?'EN':'عربي';
+  splitStatement();
+  __hooks.forEach(function(f){try{f();}catch(e){}});
+}
+document.getElementById('langToggle').addEventListener('click',function(){setLang(LANG==='ar'?'en':'ar');});
+(function(){var s='en';try{s=(localStorage.getItem('mab-lang-v2')==='ar')?'ar':'en';}catch(e){}setLang(s);})();
+
+/* ================= reveals ================= */
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){var t=en.target;t.classList.add('inview');io.unobserve(t);setTimeout(function(){t.style.transitionDelay='';},1400);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(function(el){
+  var p=el.parentElement;if(!p)return;
+  var sibs=[];
+  for(var i=0;i<p.children.length;i++){if(p.children[i].classList&&p.children[i].classList.contains('reveal'))sibs.push(p.children[i]);}
+  var idx=sibs.indexOf(el);
+  if(idx>0)el.style.transitionDelay=Math.min(idx*80,400)+'ms';
+});
+document.querySelectorAll('.reveal,.scale-img,#goalStatement').forEach(function(el){io.observe(el);});
+
+/* ================= menu overlay ================= */
+var ov=document.getElementById('menuOv');
+function openMenu(){ov.classList.add('open');ov.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';}
+function closeMenu(){ov.classList.remove('open');ov.setAttribute('aria-hidden','true');document.body.style.overflow='';}
+document.getElementById('menuOpen').addEventListener('click',openMenu);
+document.getElementById('menuClose').addEventListener('click',closeMenu);
+ov.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',closeMenu);});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
+
+/* ================= technology showcase ================= */
+var techItems=document.querySelectorAll('.tech-item');
+var techImgs=document.querySelectorAll('#techFrame img');
+var techCounter=document.getElementById('techCounter');
+function setTech(i){
+  techItems.forEach(function(it,j){it.classList.toggle('on',j===i);});
+  techImgs.forEach(function(im,j){im.classList.toggle('on',j===i);});
+  if(techCounter)techCounter.textContent='0'+(i+1)+' / 06';
+}
+var tio=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting)setTech(parseInt(en.target.dataset.i,10));});},{rootMargin:'-42% 0px -42% 0px'});
+techItems.forEach(function(it){tio.observe(it);});
+
+/* ================= field notes ================= */
+var noteBtns=document.querySelectorAll('.note-btn');
+var notePanels=document.querySelectorAll('.note-panel');
+noteBtns.forEach(function(b){b.addEventListener('click',function(){
+  var i=parseInt(b.dataset.note,10);
+  noteBtns.forEach(function(x,j){x.classList.toggle('on',j===i);});
+  notePanels.forEach(function(p,j){p.classList.toggle('on',j===i);});
+});});
+
+/* ================= project form -> mailto ================= */
+document.getElementById('projectForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var n=document.getElementById('pfName').value.trim();
+  var p=document.getElementById('pfPhone').value.trim();
+  var m=document.getElementById('pfMsg').value.trim();
+  var subject=encodeURIComponent('New project — '+(n||'Website enquiry'));
+  var body=encodeURIComponent('Name: '+n+'\nPhone: '+p+'\n\n'+m);
+  showToast('mail');
+  window.location.href='mailto:Mohmedabdelbdie@gmail.com?subject='+subject+'&body='+body;
+});
+
+/* ================= toasts ================= */
+var TOAST_MSG={tg:{en:'Opening Telegram\u2026',ar:'\u0628\u064a\u0641\u062a\u062d \u062a\u064a\u0644\u064a\u062c\u0631\u0627\u0645\u2026'},mail:{en:'Opening your email app\u2026',ar:'\u0628\u064a\u0641\u062a\u062d \u062a\u0637\u0628\u064a\u0642 \u0627\u0644\u0625\u064a\u0645\u064a\u0644\u2026'}};
+var TOAST_ICON='<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg>';
+function showToast(kind){
+  var box=document.getElementById('toasts');if(!box)return;
+  var msgs=TOAST_MSG[kind]||TOAST_MSG.tg;
+  var t=document.createElement('div');t.className='toast';
+  t.innerHTML=TOAST_ICON+'<span></span>';
+  t.querySelector('span').textContent=msgs[LANG]||msgs.en;
+  box.appendChild(t);
+  while(box.children.length>3)box.removeChild(box.firstChild);
+  requestAnimationFrame(function(){requestAnimationFrame(function(){t.classList.add('show');});});
+  setTimeout(function(){t.classList.add('hide');setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},500);},6000);
+}
+document.querySelectorAll('a[href^="https://t.me/DrBadieBot"]').forEach(function(a){a.addEventListener('click',function(){showToast('tg');});});
+
+/* ================= menu bottom-sheet drag (mobile) ================= */
+var sheetIn=ov.querySelector('.menu-in');
+var sheetHandle=document.getElementById('sheetHandle');
+var dragStartY=null,dragDy=0;
+function endSheetDrag(){
+  if(dragStartY===null)return;
+  var dy=dragDy;dragStartY=null;dragDy=0;
+  sheetIn.classList.remove('dragging');
+  if(dy>110)closeMenu();
+  sheetIn.style.transform='';
+}
+if(sheetHandle){
+  sheetHandle.addEventListener('pointerdown',function(e){
+    if(window.innerWidth>700)return;
+    dragStartY=e.clientY;dragDy=0;
+    sheetIn.classList.add('dragging');
+    try{sheetHandle.setPointerCapture(e.pointerId);}catch(err){}
+  });
+  sheetHandle.addEventListener('pointermove',function(e){
+    if(dragStartY===null)return;
+    dragDy=Math.max(0,e.clientY-dragStartY);
+    sheetIn.style.transform='translateY('+dragDy+'px)';
+  });
+  sheetHandle.addEventListener('pointerup',endSheetDrag);
+  sheetHandle.addEventListener('pointercancel',endSheetDrag);
+}
+ov.addEventListener('click',function(e){if(e.target===ov)closeMenu();});
+</script>
+</body>
+</html>
